@@ -57,7 +57,7 @@ const svg = `
     <text x="125" y="26" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="20" font-weight="700" fill="#ffffff">16개 챕터 · 62개 강의</text>
   </g>
 
-  <text x="${W - 60}" y="${H - 44}" text-anchor="end" font-family="Pretendard, sans-serif" font-size="22" font-weight="600" fill="#6B7390">web-pro.dreamitbiz.com</text>
+  <text x="${W - 60}" y="${H - 44}" text-anchor="end" font-family="Pretendard, sans-serif" font-size="22" font-weight="600" fill="#6B7390">bootcamp.dreamitbiz.com</text>
 </svg>`
 
 await sharp(Buffer.from(svg)).png().toFile(out)

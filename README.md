@@ -2,7 +2,7 @@
 
 React 프론트엔드부터 생성형 AI 웹 서비스까지, **16개 챕터 · 62개 강의**로 완성하는 실무형 웹 개발 학습 플랫폼.
 
-🔗 **https://web-pro.dreamitbiz.com**
+🔗 **https://bootcamp.dreamitbiz.com**
 
 NOVAWORKS 디자인 아티팩트(블루 그라데이션 + 오렌지 포인트, Pretendard, 플로팅 필 헤더)를 React로 포팅하고,
 저장소의 교재 PDF(`docs/`)를 기반으로 커리큘럼을 구성했습니다.
@@ -39,7 +39,7 @@ npm run build && npm run preview
 ## Supabase 준비
 1. `supabase/schema.sql` 을 SQL Editor에서 실행 (webpro_ 테이블 + RLS).
 2. Authentication → Providers 에서 **Google**, **Kakao** 활성화.
-3. Redirect URL 에 `https://web-pro.dreamitbiz.com/auth/callback` (및 로컬 `http://localhost:5173/auth/callback`) 추가.
+3. Redirect URL 에 `https://bootcamp.dreamitbiz.com/auth/callback` (및 로컬 `http://localhost:5173/auth/callback`) 추가.
 
 ## 폴더 구조
 ```
