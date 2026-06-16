@@ -1,0 +1,171 @@
+[
+  {
+    "id": "react-05",
+    "track": "react",
+    "no": 5,
+    "title": "API 연동과 인증 프로세스 구현",
+    "summary": "fetch와 axios로 외부 API를 호출하고 로딩·에러·취소 상태를 깔끔하게 다루는 실무 패턴을 익힙니다. Todo 앱으로 상태 관리와 localStorage 영속성을 다지고, 로그인 API 연동부터 JWT 기반 인증 상태 유지·보호 라우트까지 실무형 프론트엔드의 핵심 흐름을 완성합니다.",
+    "duration": "약 4시간",
+    "level": "중급",
+    "tags": ["fetch", "axios", "JWT", "useEffect", "인증"],
+    "sections": [
+      {
+        "no": "5.1",
+        "title": "fetch/axios를 이용한 API 호출",
+        "summary": "JavaScript의 비동기 모델과 Promise/async-await 흐름을 이해하고, fetch와 axios의 차이를 비교합니다. 응답·에러·로딩 상태를 관리하는 공통 훅(useApi)을 만들어 외부 데이터를 안정적으로 화면에 렌더링하는 실무 패턴을 학습합니다.",
+        "points": [
+          "이벤트 루프 기반 비동기 호출과 직렬·병렬 제어, AbortController를 이용한 취소·타임아웃 처리",
+          "fetch(내장·경량)와 axios(자동 JSON 파싱·인터셉터·인스턴스 설정)의 장단점 비교 및 선택 기준",
+          "{ data, loading, error } 상태 패턴과 컴포넌트 언마운트 시 취소를 처리하는 공통 useApi 훅 설계",
+          "스켈레톤 로더·빈 상태·낙관적 업데이트 등 외부 데이터 기반 화면의 UX 구성 요소"
+        ]
+      },
+      {
+        "no": "5.2",
+        "title": "Todo 애플리케이션 작성",
+        "summary": "useState로 할 일 배열을 관리하며 추가·삭제·완료 토글을 불변성 원칙에 맞게 구현합니다. 조건부 렌더링으로 완료 상태를 시각화하고 localStorage로 데이터를 저장해, 상태 관리·이벤트 처리·영속성을 종합적으로 실습합니다.",
+        "points": [
+          "스프레드 연산자와 filter·map을 활용한 불변성 기반 항목 추가·삭제·수정",
+          "삼항 연산자와 조건부 className으로 완료/미완료 항목을 시각적으로 구분하는 조건부 렌더링",
+          "useEffect와 localStorage를 결합해 새로고침 후에도 데이터가 유지되는 영속성 구현",
+          "TodoInput·TodoList·TodoItem으로 책임을 분리한 컴포넌트 구조화"
+        ]
+      },
+      {
+        "no": "5.3",
+        "title": "로그인 프로세스 및 API 호출 구현",
+        "summary": "아이디·비밀번호 입력으로 로그인 API를 호출하고 JWT 토큰을 localStorage에 저장해 인증 상태를 유지합니다. Context 기반 전역 인증 상태, 보호 라우트, 로그인 후 리다이렉트, 로딩·에러 처리까지 실무형 인증 흐름을 직접 구축합니다.",
+        "points": [
+          "로그인 API POST 요청과 응답에 따른 성공·실패 분기, 토큰 수신 처리",
+          "JWT 토큰의 localStorage 저장·제거와 인증 헤더(Bearer) 첨부를 통한 인증 상태 유지",
+          "AuthContext로 전역 인증 상태를 제공하고 ProtectedRoute로 비인증 접근을 차단·리다이렉트",
+          "member.json 기반 모의 로그인과 학습용 페이크 JWT 생성·파싱·만료 검증"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "react-06",
+    "track": "react",
+    "no": 6,
+    "title": "리액트 프로젝트 설계",
+    "summary": "단순 학습 예제를 넘어 실제 서비스 수준의 프로젝트 구조를 설계하는 방법을 배웁니다. 도메인·기능·화면 중심 폴더 구조를 비교하고 중첩 컴포넌트 전략과 협업 규칙을 익히며, React Router로 SPA 화면 흐름과 라우팅을 구성해 작은 전자상거래 샘플을 완성합니다.",
+    "duration": "약 4시간",
+    "level": "중급",
+    "tags": ["폴더구조", "컴포넌트설계", "React Router", "SPA", "Context"],
+    "sections": [
+      {
+        "no": "6.1",
+        "title": "실무 컴포넌트 구조 설계",
+        "summary": "도메인 중심·기능 중심·화면 중심 폴더 구조를 비교하고 응집도와 결합도를 고려한 경계를 설계합니다. Container/Presentational 분리, props 인터페이스, 구성(composition) 패턴과 메모이제이션, 그리고 팀 협업을 위한 네이밍·문서화 규칙까지 학습합니다.",
+        "points": [
+          "도메인 단위로 components·hooks·api를 모아 응집도를 높이는 폴더 구조와 점진적 마이그레이션 전략",
+          "기능 중심 vs 화면 중심 구조의 장단점 비교와 프로젝트 상황에 맞춘 하이브리드 선택 기준",
+          "Container/Presentational 분리, children·render props·커스텀 훅을 활용한 구성 패턴",
+          "네이밍 규칙·ESLint/Prettier·Storybook·Git 워크플로우 등 팀 협업 표준화"
+        ]
+      },
+      {
+        "no": "6.2",
+        "title": "화면 흐름 및 라우팅 구성",
+        "summary": "SPA의 동작 원리와 브라우저 히스토리 처리, 코드 스플리팅을 이해합니다. React Router를 설치해 경로를 설정하고 Link·NavLink·useNavigate로 화면을 전환하며, 중첩 라우팅과 URL·쿼리 파라미터, 보호 라우트까지 실전 라우팅을 구성합니다.",
+        "points": [
+          "History API 기반 SPA 라우팅 원리와 React.lazy·Suspense를 이용한 코드 스플리팅",
+          "BrowserRouter·Routes·Route 기본 셋업과 와일드카드 404·SPA 서버 폴백 설정",
+          "Link·NavLink·useNavigate·useLocation을 활용한 선언적·프로그래밍적 화면 이동",
+          "Outlet 중첩 라우팅과 useParams·useSearchParams를 통한 동적·쿼리 파라미터 처리"
+        ]
+      },
+      {
+        "no": "6.3",
+        "title": "리액트 프로젝트 설계 실습",
+        "summary": "도메인 중심 폴더 구조와 중첩 라우팅을 실제 Vite 기반 코드로 구현합니다. 공통 컴포넌트화, 상태 위치 재배치, CartContext·AuthContext 설계를 적용해 장바구니·인증·대시보드를 갖춘 전자상거래 스타일 샘플을 완성합니다.",
+        "points": [
+          "반복 UI·로직을 공통 컴포넌트와 유틸·훅으로 추출해 재사용성과 테스트 용이성 확보",
+          "로컬 vs 전역 상태 판별과 useReducer·Context를 활용한 props drilling 제거",
+          "useReducer+localStorage로 장바구니 상태를 관리하는 CartContext 구현",
+          "MainLayout·ProtectedRoute·도메인 컴포넌트로 구성한 라우팅 기반 실무 샘플 빌드"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "react-07",
+    "track": "react",
+    "no": 7,
+    "title": "프로젝트 리팩터링과 배포",
+    "summary": "중복 제거·공통 컴포넌트 추출·상태 재배치 등 안전한 리팩토링 기법과 ESLint·Prettier·husky·CI로 코드 품질 파이프라인을 구축합니다. 이어 CRA와 Vite 빌드 차이, Netlify·Vercel 배포, 환경변수 보안 처리, Sentry·Web Vitals 모니터링까지 운영 전 과정을 실무 관점으로 익힙니다.",
+    "duration": "약 4시간",
+    "level": "실전",
+    "tags": ["리팩토링", "ESLint", "CI/CD", "Vite", "Netlify"],
+    "sections": [
+      {
+        "no": "7.1",
+        "title": "코드 리팩토링 기법",
+        "summary": "반복되는 UI와 로직을 공통 컴포넌트·커스텀 훅·유틸로 추출하고 명확한 인터페이스와 테스트로 보완합니다. 일관된 네이밍·폴더 정리, 상태 위치 이동과 useReducer 도입, ESLint·Prettier·husky·CI로 코드 품질을 자동 검증하는 파이프라인을 구축합니다.",
+        "points": [
+          "중복 버튼·로직을 variant 기반 공통 컴포넌트와 useLocalStorage 같은 훅으로 추출",
+          "PascalCase·use 접두사·index.js re-export 등 네이밍·폴더 표준과 단일 진입점 설계",
+          "로컬 vs 전역 상태 판정, 상태 끌어올리기, Context vs react-query·Redux 선택 기준",
+          "ESLint+Prettier 설정, husky·lint-staged pre-commit 훅, GitHub Actions CI와 RTL 테스트"
+        ]
+      },
+      {
+        "no": "7.2",
+        "title": "빌드 및 배포 프로세스",
+        "summary": "CRA(webpack)와 Vite(esbuild·Rollup)의 빌드 방식 차이와 번들 최적화·코드 스플리팅을 이해합니다. Netlify·Vercel로 SPA를 배포하고, 빌드타임 vs 런타임 환경변수와 시크릿을 안전하게 다루며, Sentry·Web Vitals로 배포 후 모니터링 흐름을 구성합니다.",
+        "points": [
+          "CRA와 Vite의 개발 서버·번들러 차이, tree-shaking·번들 분석을 통한 용량 최적화",
+          "Netlify(_redirects·netlify.toml)·Vercel(vercel.json) SPA 폴백 배포와 커스텀 도메인·HTTPS",
+          "REACT_APP_/VITE_ 접두사 환경변수와 GitHub Secrets·서버리스 함수를 통한 시크릿 보호",
+          "Sentry 오류 수집, Web Vitals 성능 지표, 알림·롤백·헬스체크 운영 모니터링 전략"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "react-08",
+    "track": "react",
+    "no": 8,
+    "title": "프로젝트 실무 적용",
+    "summary": "금융 서비스 목록·상세 화면을 직접 설계하고 API 연동·조건부 렌더링·예외 처리를 적용해 실무형 화면을 구현합니다. 기획서 작성부터 기능 구현, 발표·시연, 피드백 기반 개선과 문서화까지 팀 단위 미니 프로젝트 전 과정을 경험하며 개발과 협업 역량을 함께 키웁니다.",
+    "duration": "약 3시간",
+    "level": "실전",
+    "tags": ["프로젝트", "API연동", "조건부렌더링", "협업", "발표"],
+    "sections": [
+      {
+        "no": "8.1",
+        "title": "금융 서비스 목록·상세 화면 구현",
+        "summary": "목록과 상세 화면을 재사용 가능한 컴포넌트 단위로 설계하고, axios/fetch로 외부 데이터를 바인딩합니다. 로딩·에러·빈 데이터 등 다양한 조건에 따른 조건부 렌더링과 예외 처리를 적용해 안정적이고 사용자 친화적인 금융 화면을 완성합니다.",
+        "points": [
+          "ServiceList·ServiceItem·ServiceDetail로 목록/상세 UI를 컴포넌트화하고 props로 데이터·이벤트 전달",
+          "useState·useEffect와 axios로 데이터를 fetch하며 loading·error 상태 관리",
+          "로딩 스피너·빈 데이터·네트워크 오류를 다루는 조건부 렌더링과 예외 처리 UI",
+          "목록 선택→상세→뒤로가기로 이어지는 화면 전환 시나리오 통합"
+        ]
+      },
+      {
+        "no": "8.2",
+        "title": "미니 프로젝트 완성 및 발표",
+        "summary": "기능 기획서와 구현 전략 수립부터 화면 설계·기능 구현, 발표 자료 제작과 시연까지 프로젝트 전 과정을 경험합니다. 발표와 팀 피드백을 바탕으로 코드를 개선하고 README·설계 문서를 정리해 실무형 프로젝트 마무리를 학습합니다.",
+        "points": [
+          "요구사항 정의·화면 흐름 설계·구현 전략 수립으로 개발 전 아키텍처와 로드맵 정리",
+          "컴포넌트 설계, useState·useEffect·Context 상태 관리, 이벤트 처리로 동작하는 화면 구현",
+          "화면 캡처·기능 설명을 담은 발표 자료 제작과 실무형 시연·질의응답",
+          "피드백 기반 중복 제거·불변성 개선·네이밍 정리와 README·API 문서화"
+        ]
+      },
+      {
+        "no": "8.3",
+        "title": "금융 서비스 프로젝트 애플리케이션",
+        "summary": "가상 은행 GTBank API를 연동하는 React+Axios 애플리케이션을 실행 가능한 수준으로 구현합니다. 디렉터리 구조·설치·실행 명령부터 API 모듈, 공통 컴포넌트, 라우팅 기반 홈·상세 페이지까지 전체 소스 코드를 직접 작성하며 실무 흐름을 완성합니다.",
+        "points": [
+          "axios 인스턴스로 fetchAccounts·fetchAccountDetail API 모듈(bankApi.js) 구성",
+          "Loader·Header·AccountList·AccountDetail 등 재사용 공통 컴포넌트 작성",
+          "useParams 기반 상세 조회와 로딩·에러 처리를 갖춘 Home·Detail 페이지 구현",
+          "BrowserRouter 라우팅으로 홈·상세 페이지를 연결한 SPA 구조 완성"
+        ]
+      }
+    ]
+  }
+]
