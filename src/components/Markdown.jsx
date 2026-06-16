@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { C } from '../theme'
+import CodeBlock from './CodeBlock'
 
 // 헤딩 텍스트에서 "5.1" 같은 섹션 번호를 뽑아 앵커 id 생성 → #s-5.1
 const textOf = (children) =>
@@ -54,12 +55,7 @@ const comp = (accent) => ({
       return <code style={{ background: '#EEF1F6', color: '#1A45D8', padding: '2px 7px', borderRadius: 6, fontSize: '0.88em', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', wordBreak: 'break-word' }}>{children}</code>
     }
     const lang = match ? match[1] : ''
-    return (
-      <span style={{ display: 'block', position: 'relative', margin: '18px 0' }}>
-        {lang && <span style={{ position: 'absolute', top: 0, right: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', color: '#8893A7', background: '#0d1424', padding: '4px 12px', borderRadius: '0 12px 0 10px', textTransform: 'uppercase' }}>{lang}</span>}
-        <code className="md-code" style={{ display: 'block', overflowX: 'auto', background: '#0d1117', color: '#E6EDF3', padding: '20px 22px', borderRadius: 12, fontSize: 13.5, lineHeight: 1.7, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', whiteSpace: 'pre' }}>{children}</code>
-      </span>
-    )
+    return <CodeBlock code={text} lang={lang} />
   },
   pre: ({ children }) => <>{children}</>,
 })
