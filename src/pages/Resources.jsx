@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { C, trackColor, trackGrad } from '../theme'
 import { CHAPTERS, TRACKS, byTrack } from '../data/curriculum'
 import { labsOf, totalLabs } from '../data/labs'
-import { pdfName, pdfUrl } from '../data/materials'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
 
@@ -20,10 +19,10 @@ export default function Resources() {
             학습 자료 &<br /><span style={{ fontWeight: 800 }}>실습 예제</span>
           </h1>
           <p style={{ margin: '24px 0 0', maxWidth: 680, fontSize: 'clamp(15px,2vw,18px)', lineHeight: 1.7, color: '#9CA2AD' }}>
-            부트캠프가 제공하는 모든 교재와 실습을 한곳에 모았습니다. 16개 챕터 · {totalSec}개 강의 · {totalLabs}개 실습 예제, 그리고 원본 교재 PDF까지 챕터별로 확인하세요.
+            부트캠프의 모든 강의 내용을 웹에서 바로 학습하세요. 16개 챕터 · {totalSec}개 강의 · {totalLabs}개 실습 예제의 본문과 코드를 챕터별로 상세히 제공합니다.
           </p>
           <div style={{ display: 'flex', gap: 28, marginTop: 30, flexWrap: 'wrap' }}>
-            {[['교재 PDF', '16종'], ['강의', `${totalSec}개`], ['실습 예제', `${totalLabs}개`]].map(([k, v]) => (
+            {[['챕터', '16개'], ['강의', `${totalSec}개`], ['실습 예제', `${totalLabs}개`]].map(([k, v]) => (
               <div key={k}>
                 <div style={{ fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, letterSpacing: '-0.02em' }}>{v}</div>
                 <div style={{ fontSize: 13, color: '#6B7178', marginTop: 4 }}>{k}</div>
@@ -60,15 +59,9 @@ export default function Resources() {
                             <div style={{ fontSize: 12.5, color: '#9CA2AD', marginTop: 4 }}>{ch.level} · {ch.sections.length}강의 · 실습 {labs.length}개 · {ch.duration}</div>
                           </div>
                         </div>
-                        <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
-                          {pdfName(ch.id) && (
-                            <a href={pdfUrl(ch.id)} target="_blank" rel="noreferrer" className="hov-lift" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '9px 16px', borderRadius: 60, border: `1px solid ${C.line}`, background: '#fff', fontSize: 13, fontWeight: 600, color: C.ink }}>
-                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={tc} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>
-                              교재 PDF
-                            </a>
-                          )}
-                          <Link to={`/lesson/${ch.id}`} className="cta-pill" style={{ display: 'inline-flex', alignItems: 'center', padding: '9px 16px', borderRadius: 60, background: trackGrad(ch.track), color: '#fff', fontSize: 13, fontWeight: 700 }}>강의 보기 →</Link>
-                        </div>
+                        <Link to={`/lesson/${ch.id}`} className="cta-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '11px 20px', borderRadius: 60, background: trackGrad(ch.track), color: '#fff', fontSize: 13.5, fontWeight: 700, flexShrink: 0 }}>
+                          본문 학습 →
+                        </Link>
                       </div>
 
                       {/* sections */}
@@ -76,9 +69,9 @@ export default function Resources() {
                         <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#9CA2AD', marginBottom: 10 }}>강의 목차</div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                           {ch.sections.map((s) => (
-                            <span key={s.no} style={{ fontSize: 13, color: '#3A3F49', background: C.soft, padding: '6px 12px', borderRadius: 10 }}>
+                            <Link key={s.no} to={`/lesson/${ch.id}#s-${s.no}`} className="hov-lift" style={{ fontSize: 13, color: '#3A3F49', background: C.soft, padding: '6px 12px', borderRadius: 10 }}>
                               <b style={{ color: tc, fontWeight: 700 }}>{s.no}</b> {s.title}
-                            </span>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -107,12 +100,6 @@ export default function Resources() {
             </div>
           )
         })}
-
-        <p style={{ marginTop: 8, fontSize: 13, color: '#9CA2AD', lineHeight: 1.6 }}>
-          ※ 원본 교재 PDF·추출 텍스트·커리큘럼 데이터는 저장소{' '}
-          <a href="https://github.com/aebonlee/bootcamp/tree/main/docs" target="_blank" rel="noreferrer" style={{ color: C.blueD, fontWeight: 600 }}>docs 폴더</a>
-          에서 함께 제공됩니다.
-        </p>
       </section>
     </main>
   )

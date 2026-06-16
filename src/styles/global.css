@@ -51,3 +51,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .card-link { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .3s, background .3s; }
 .card-link:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(10,11,13,0.14); }
+
+/* 강의 본문 레이아웃: 좌측 목차 + 우측 콘텐츠 */
+.lesson-grid { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.lesson-toc { position: relative; }
+@media (max-width: 880px) {
+  .lesson-grid { grid-template-columns: 1fr; }
+  .lesson-toc { display: none; }
+}
+/* 마크다운 코드블록 스크롤바 */
+.md-code::-webkit-scrollbar { height: 9px; }
+.md-code::-webkit-scrollbar-thumb { background: #2b3650; border-radius: 9px; }
+.md-body :first-child { margin-top: 0 !important; }

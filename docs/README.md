@@ -1,39 +1,23 @@
-# docs — 학습자료 원본
+# docs — 커리큘럼 데이터
 
-이 사이트의 커리큘럼은 아래 교재 PDF에서 추출·정리되었습니다.
+이 사이트의 강의 본문은 교재 내용을 **웹페이지로 재구성**하여 제공합니다.
+학습자는 사이트에서 직접 공부하며, 교재 원본 파일(PDF)은 배포하지 않습니다.
 
 ## 구성
-- `pdf/` — 원본 교재 PDF 16종 (React 8장 + AI 웹 서비스 8장)
-- `text/` — 각 PDF를 `pdftotext -layout` 으로 추출한 텍스트
-- `curriculum/` — 텍스트를 정제해 만든 구조화 커리큘럼 JSON
-  - `react-1.json` (1~4장), `react-2.json` (5~8장)
-  - `ai-1.json` (1~4장), `ai-2.json` (5~8장)
-  - → 빌드용 데이터 `src/data/curriculum.js` 로 병합됨
+- `curriculum/` — 구조화 커리큘럼 메타데이터(JSON)
+  - `react-1.json`(1~4장), `react-2.json`(5~8장), `ai-1.json`(1~4장), `ai-2.json`(5~8장)
+  - → `src/data/curriculum.js` 로 병합되어 목차·카드·진도에 사용
+
+## 강의 본문
+- 각 챕터의 전체 본문(설명 + 코드 + 실습 소스)은 `src/content/<챕터id>.md` 로 작성되어
+  강의 상세 페이지(`/lesson/:id`)에서 렌더링됩니다.
+- 실습 예제 목록: `src/data/labs.js`
 
 ## 트랙별 챕터
 ### React 프론트엔드
-1. JSX 문법과 React 기본 개념
-2. Props와 State 이해
-3. UI 디자인 및 구현
-4. 상태관리 및 데이터 연동
-5. API 연동과 인증 프로세스 구현
-6. 리액트 프로젝트 설계
-7. 프로젝트 리팩터링과 배포
-8. 프로젝트 실무 적용
+1. JSX 문법과 React 기본 개념 · 2. Props와 State · 3. UI 디자인 및 구현 · 4. 상태관리/데이터 연동
+5. API 연동과 인증 · 6. 리액트 프로젝트 설계 · 7. 리팩터링과 배포 · 8. 프로젝트 실무 적용
 
 ### AI 웹 서비스
-1. FastAPI와 Hugging Face
-2. Transformers 활용
-3. NLP 웹 서비스
-4. 이미지 생성 (Stable Diffusion)
-5. 음성 AI 웹 프로젝트 (Whisper/TTS)
-6. 컴퓨터 비전 웹 서비스
-7. 멀티모달 (CLIP/LLaVA)
-8. 배포와 운영
-
-## 재생성
-```bash
-# PDF → 텍스트
-for f in docs/pdf/*.pdf; do pdftotext -layout "$f" "docs/text/$(basename "${f%.pdf}").txt"; done
-# 커리큘럼 JSON은 추출 텍스트를 정제하여 작성 (docs/curriculum/*.json)
-```
+1. FastAPI/Hugging Face · 2. Transformers · 3. NLP 웹 서비스 · 4. 이미지 생성
+5. 음성 AI · 6. 컴퓨터 비전 · 7. 멀티모달 · 8. 배포와 운영
