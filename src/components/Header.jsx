@@ -6,8 +6,8 @@ import { useAuth } from '../hooks/useAuth'
 
 const NAV = [
   { to: '/curriculum', label: 'CURRICULUM', ko: '커리큘럼' },
-  { to: '/track/react', label: 'REACT', ko: '프론트엔드' },
-  { to: '/track/ai', label: 'AI', ko: 'AI 서비스' },
+  { to: '/projects', label: 'PROJECTS', ko: '프로젝트' },
+  { to: '/quiz', label: 'QUIZ', ko: '복습·퀴즈' },
   { to: '/resources', label: 'RESOURCES', ko: '자료·실습' },
   { to: '/about', label: 'ABOUT', ko: '소개' },
 ]
@@ -48,7 +48,7 @@ export default function Header() {
                 <Link key={n.to} to={n.to} className="navlink"
                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.05, color: '#15171C', opacity: loc.pathname.startsWith(n.to) ? 1 : 0.78 }}>
                   <span style={{ fontSize: 14.5, fontWeight: 600, letterSpacing: '0.04em' }}>{n.label}</span>
-                  <span style={{ fontSize: 8, fontWeight: 500, letterSpacing: '0.02em', color: '#8A9099', marginTop: 1 }}>{n.ko}</span>
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.02em', color: '#1A45D8', marginTop: 1 }}>{n.ko}</span>
                 </Link>
               ))}
             </nav>

@@ -1,0 +1,122 @@
+// 학습 후 직접 만들어 보는 프로젝트 예제 — 입문 → 중급 → 고급
+// track: react | ai | fullstack
+export const PROJECT_LEVELS = ['입문', '중급', '고급']
+
+export const PROJECTS = [
+  // ===== 입문 =====
+  {
+    id: 'p-profile-cards', level: '입문', track: 'react',
+    title: '프로필 카드 갤러리',
+    summary: 'JSX와 props, 배열 map 렌더링으로 팀원 프로필 카드를 그리드로 보여주는 첫 React 앱.',
+    duration: '2~3시간',
+    stack: ['React', 'JSX', 'props', 'CSS'],
+    features: ['컴포넌트 분리(Card)와 props 전달', '배열 데이터를 map으로 반복 렌더링', '반응형 그리드 레이아웃', '조건부 렌더링(재직/퇴사 배지)'],
+    chapters: ['react-01', 'react-02'],
+  },
+  {
+    id: 'p-todo', level: '입문', track: 'react',
+    title: '할 일 관리 Todo 앱',
+    summary: 'useState로 추가·완료·삭제를 처리하고 localStorage로 데이터를 보존하는 대표 입문 실습.',
+    duration: '3~4시간',
+    stack: ['React', 'useState', 'localStorage'],
+    features: ['할 일 추가/삭제/완료 토글', '불변성을 지키는 상태 배열 관리', '필터(전체/진행/완료)', 'localStorage 영속화'],
+    chapters: ['react-02', 'react-04', 'react-05'],
+  },
+  {
+    id: 'p-weather', level: '입문', track: 'react',
+    title: '날씨·환율 조회 위젯',
+    summary: 'fetch/axios로 공개 API를 호출하고 로딩·에러 상태를 처리하는 비동기 데이터 연동 입문.',
+    duration: '3시간',
+    stack: ['React', 'fetch', 'useEffect'],
+    features: ['도시 입력 → 외부 API 호출', '로딩 스피너와 에러 메시지 처리', 'useEffect 의존성 이해', '응답 데이터 가공·표시'],
+    chapters: ['react-04', 'react-05'],
+  },
+  {
+    id: 'p-sentiment', level: '입문', track: 'ai',
+    title: 'AI 감정 분석기 API',
+    summary: 'FastAPI와 Hugging Face 파이프라인으로 문장의 긍·부정을 판별하는 첫 AI 웹 API.',
+    duration: '3시간',
+    stack: ['FastAPI', 'Hugging Face', 'pipeline'],
+    features: ['pipeline("sentiment-analysis")로 추론', 'POST /predict 엔드포인트 설계', 'Pydantic 요청/응답 모델', 'Swagger UI(/docs)로 테스트'],
+    chapters: ['ai-01', 'ai-02'],
+  },
+
+  // ===== 중급 =====
+  {
+    id: 'p-movie', level: '중급', track: 'react',
+    title: '영화 검색 SPA',
+    summary: 'react-router로 목록·상세 화면을 라우팅하고 외부 API 검색·페이지네이션을 구현하는 실무형 SPA.',
+    duration: '6~8시간',
+    stack: ['React', 'react-router', 'REST API'],
+    features: ['검색어 → API 호출과 디바운스', '목록 → 상세 라우팅(useParams)', '즐겨찾기(Context/localStorage)', '로딩·빈 결과·에러 UX'],
+    chapters: ['react-04', 'react-05', 'react-06'],
+  },
+  {
+    id: 'p-board', level: '중급', track: 'fullstack',
+    title: 'Supabase 게시판 (CRUD + 인증)',
+    summary: '구글/카카오 로그인과 Supabase 데이터베이스로 글 작성·수정·삭제와 권한(RLS)을 구현하는 풀스택 게시판.',
+    duration: '8~10시간',
+    stack: ['React', 'Supabase', 'OAuth', 'RLS'],
+    features: ['소셜 로그인과 세션 유지', '글 CRUD와 본인 글만 수정/삭제(RLS)', '페이지네이션·검색', '작성자 프로필 연동'],
+    chapters: ['react-05', 'react-06'],
+  },
+  {
+    id: 'p-nlp-service', level: '중급', track: 'ai',
+    title: '문서 요약·번역 웹서비스',
+    summary: 'T5 요약기와 MarianMT 번역 모델을 FastAPI로 묶고 간단한 프론트엔드에서 호출하는 NLP 서비스.',
+    duration: '7시간',
+    stack: ['FastAPI', 'T5', 'MarianMT'],
+    features: ['요약 API와 번역 API 라우터 분리', '긴 문서 입력 처리와 길이 제한', 'CORS 설정과 프론트 연동', 'Swagger로 다국어 입력 테스트'],
+    chapters: ['ai-03'],
+  },
+  {
+    id: 'p-vision', level: '중급', track: 'ai',
+    title: '이미지 분류 웹앱',
+    summary: '이미지를 업로드하면 사전학습 모델이 분류 결과를 돌려주는 컴퓨터 비전 웹앱.',
+    duration: '6시간',
+    stack: ['FastAPI', 'transformers', 'UploadFile'],
+    features: ['이미지 업로드(UploadFile) 처리', '분류 모델 추론과 Top-K 결과', '결과 시각화 UI', '파일 검증·임시파일 정리'],
+    chapters: ['ai-06'],
+  },
+
+  // ===== 고급 =====
+  {
+    id: 'p-dashboard', level: '고급', track: 'fullstack',
+    title: '학습 진도 대시보드',
+    summary: '이 사이트처럼 소셜 인증·진도 저장·달성률 시각화를 갖춘 풀스택 학습 플랫폼을 직접 설계·구현.',
+    duration: '12시간+',
+    stack: ['React', 'Supabase', 'react-router', '차트'],
+    features: ['구글/카카오 인증과 프로필', '섹션 단위 진도 저장(upsert)', '트랙·챕터별 달성률 차트', '리팩터링과 정적 배포(CI/CD)'],
+    chapters: ['react-06', 'react-07', 'react-08'],
+  },
+  {
+    id: 'p-multimodal', level: '고급', track: 'ai',
+    title: '멀티모달 AI 챗봇',
+    summary: 'CLIP/LLaVA로 이미지와 텍스트를 함께 이해하고 답하는 멀티모달 챗봇을 FastAPI + React로 구축.',
+    duration: '12시간+',
+    stack: ['FastAPI', 'CLIP', 'LLaVA', 'React'],
+    features: ['이미지+질문 멀티파트 업로드', '멀티모달 추론 파이프라인', '대화 컨텍스트 유지', '스트리밍 응답(SSE)'],
+    chapters: ['ai-07'],
+  },
+  {
+    id: 'p-voice', level: '고급', track: 'ai',
+    title: '음성 비서 웹앱',
+    summary: 'Whisper 음성인식 → 챗봇 → TTS로 이어지는 음성 대화 파이프라인을 갖춘 보이스 어시스턴트.',
+    duration: '12시간+',
+    stack: ['FastAPI', 'Whisper', 'TTS'],
+    features: ['마이크 녹음 업로드와 STT', 'STT→LLM→TTS 파이프라인', '오디오 스트리밍 응답', '통합 main.py와 운영 구성'],
+    chapters: ['ai-05'],
+  },
+  {
+    id: 'p-saas', level: '고급', track: 'fullstack',
+    title: 'AI 이미지 생성 SaaS MVP',
+    summary: 'Stable Diffusion 생성 API에 인증·크레딧·배포까지 얹은 미니 SaaS를 React+FastAPI+Supabase로 완성.',
+    duration: '16시간+',
+    stack: ['React', 'FastAPI', 'Stable Diffusion', 'Docker'],
+    features: ['프롬프트 → 이미지 생성 API', '로그인과 사용량(크레딧) 관리', 'Docker 컨테이너화와 배포', '모니터링·속도 최적화'],
+    chapters: ['ai-04', 'ai-08', 'react-07'],
+  },
+]
+
+export const byLevel = (lv) => PROJECTS.filter((p) => p.level === lv)
+export const TOTAL_PROJECTS = PROJECTS.length

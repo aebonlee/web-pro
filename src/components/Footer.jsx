@@ -19,8 +19,8 @@ export default function Footer() {
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em', color: '#FF6A1A', marginBottom: 18 }}>LEARN</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 14.5, color: '#C7CCD6' }}>
                 <Link to="/curriculum">전체 커리큘럼</Link>
-                <Link to="/track/react">React 프론트엔드</Link>
-                <Link to="/track/ai">AI 웹 서비스</Link>
+                <Link to="/projects">프로젝트 예제</Link>
+                <Link to="/quiz">복습 · 퀴즈</Link>
                 <Link to="/resources">자료 · 실습 예제</Link>
                 <Link to="/me">내 학습 현황</Link>
               </div>
