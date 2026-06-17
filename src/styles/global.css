@@ -36,7 +36,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .desknav { display: flex; }
 .burger { display: none !important; }
 .navlink { transition: opacity .2s; }
-.navlink:hover { opacity: 1 !important; }
+.navlink:hover { opacity: 0.6; }
 .cta-pill { transition: filter .2s; }
 .cta-pill:hover { filter: brightness(1.08); }
 @media (max-width: 1260px) {
