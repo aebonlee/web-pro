@@ -44,7 +44,7 @@ export default function Lesson() {
   const completed = prog?.completedSet(ch.id) || new Set()
   const done = completed.size
   const total = ch.sections.length
-  const pct = Math.round((done / total) * 100)
+  const pct = total ? Math.round((done / total) * 100) : 0
 
   const siblings = byTrack(ch.track)
   const idx = siblings.findIndex((c) => c.id === ch.id)

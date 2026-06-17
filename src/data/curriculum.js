@@ -647,6 +647,16 @@ export const CHAPTERS = [
           "Swagger UI에서 한글 인코딩 이슈 발생 시 curl/Postman으로 우회",
           "8비트 양자화·CPU 오프로딩·지연 로드로 GPU OOM 방지"
         ]
+      },
+      {
+        "no": "3.6",
+        "title": "프로젝트 requirements.txt 및 실행 가이드",
+        "summary": "3장에서 만든 챗봇·요약·번역·유사도 검색 API를 하나의 프로젝트로 묶어 실행하는 방법을 정리합니다. 의존성 목록(requirements.txt)과 폴더 구조, 서버 기동 명령과 점검 절차를 단계별로 안내합니다.",
+        "points": [
+          "requirements.txt로 transformers·torch·faiss 등 의존성 일괄 설치",
+          "라우터별 모듈 구조와 main.py 통합 실행 흐름 이해",
+          "uvicorn 기동 후 /docs에서 각 API 동작 점검"
+        ]
       }
     ]
   },
@@ -770,6 +780,17 @@ export const CHAPTERS = [
           "UploadFile 속성과 async/await 기반 파일 읽기 처리",
           "BackgroundTasks로 임시 파일을 백그라운드에서 안전하게 정리",
           "오디오 정보 추출(길이·샘플레이트·채널)과 실시간 처리 비율(realtime factor) 계산"
+        ]
+      },
+      {
+        "no": "5.5",
+        "title": "통합 main.py 및 전체 서비스 실행",
+        "summary": "음성 인식(Whisper)·음성 합성(TTS)·음성 챗봇·오디오 업로드 기능을 하나의 FastAPI 앱으로 통합합니다. lifespan으로 모델을 일괄 로드하고 CORS·예외 처리·라우터 등록을 구성해 전체 음성 AI 서비스를 실행합니다.",
+        "points": [
+          "lifespan으로 Whisper·TTS·챗봇 모델을 서버 시작 시 일괄 로드",
+          "include_router로 ASR·TTS·voice-chat·upload 라우터 통합",
+          "CORS 미들웨어·전역 예외 처리·.env 환경설정 구성",
+          "uvicorn 기동 후 전체 음성 파이프라인 동작 점검"
         ]
       }
     ]
@@ -980,3 +1001,7 @@ export const TRACKS = {
 
 export const getChapter = (id) => CHAPTERS.find(c => c.id === id);
 export const byTrack = (t) => CHAPTERS.filter(c => c.track === t);
+
+// 합계(표기 일관성용)
+export const TOTAL_CHAPTERS = CHAPTERS.length;
+export const TOTAL_LESSONS = CHAPTERS.reduce((n, c) => n + c.sections.length, 0);

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import { TOTAL_CHAPTERS, TOTAL_LESSONS } from '../data/curriculum'
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
             <Logo dark />
             <p style={{ margin: '20px 0 0', color: '#9CA2AD', fontSize: 14.5, lineHeight: 1.7 }}>
               React 프론트엔드부터 생성형 AI 웹 서비스까지.<br />
-              실무로 이어지는 16개 챕터 · 62개 강의의 웹 개발 학습 플랫폼.
+              실무로 이어지는 {TOTAL_CHAPTERS}개 챕터 · {TOTAL_LESSONS}개 강의의 웹 개발 학습 플랫폼.
             </p>
           </div>
           <div style={{ display: 'flex', gap: 'clamp(40px,7vw,90px)', flexWrap: 'wrap' }}>

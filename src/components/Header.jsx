@@ -43,11 +43,12 @@ export default function Header() {
           <div style={{ padding: '0 clamp(16px,2vw,28px)', height: 70, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <Link to="/" aria-label="홈"><Logo /></Link>
 
-            <nav className="desknav" style={{ alignItems: 'center', gap: 'clamp(6px,1.5vw,26px)' }}>
+            <nav className="desknav" style={{ alignItems: 'center', gap: 'clamp(8px,1.5vw,24px)' }}>
               {NAV.map((n) => (
                 <Link key={n.to} to={n.to} className="navlink"
-                  style={{ fontSize: 14.5, fontWeight: 600, letterSpacing: '0.04em', color: '#15171C', opacity: loc.pathname.startsWith(n.to) ? 1 : 0.78 }}>
-                  {n.label}
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.05, color: '#15171C', opacity: loc.pathname.startsWith(n.to) ? 1 : 0.78 }}>
+                  <span style={{ fontSize: 14.5, fontWeight: 600, letterSpacing: '0.04em' }}>{n.label}</span>
+                  <span style={{ fontSize: 8, fontWeight: 500, letterSpacing: '0.02em', color: '#8A9099', marginTop: 1 }}>{n.ko}</span>
                 </Link>
               ))}
             </nav>

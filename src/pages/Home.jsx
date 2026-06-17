@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { C, grad } from '../theme'
-import { CHAPTERS, TRACKS, byTrack } from '../data/curriculum'
+import { CHAPTERS, TRACKS, byTrack, TOTAL_CHAPTERS, TOTAL_LESSONS } from '../data/curriculum'
 import { Eyebrow, ChapterCard } from '../components/ui'
 import Reveal from '../components/Reveal'
 import { useProgress } from '../hooks/useProgress'
@@ -11,7 +11,7 @@ const STACK = ['React 19', 'Vite', 'Supabase', 'FastAPI', 'Hugging Face', 'Tailw
 const FEATURES = [
   { t: '실무 중심 커리큘럼', d: 'JSX 기초부터 인증·배포까지, 현업 프로젝트 흐름 그대로 설계된 16개 챕터.', orn: 'orn-bowtie.svg' },
   { t: '프론트 + AI 두 트랙', d: 'React 프론트엔드와 FastAPI·Hugging Face 기반 생성형 AI 웹 서비스를 한 곳에서.', orn: 'orn-tunnel.svg' },
-  { t: '62개 강의 · 진도 관리', d: '섹션 단위로 학습을 체크하고 트랙별 달성률을 한눈에 추적합니다.', orn: 'orn-rings.svg' },
+  { t: `${TOTAL_LESSONS}개 강의 · 진도 관리`, d: '섹션 단위로 학습을 체크하고 트랙별 달성률을 한눈에 추적합니다.', orn: 'orn-rings.svg' },
   { t: '바로 쓰는 예제 코드', d: '감정분석 API, 이미지 생성, 멀티모달 챗봇 등 그대로 응용 가능한 실습 자료.', orn: 'orn-flower.svg' },
 ]
 
@@ -41,7 +41,7 @@ export default function Home() {
         <div style={{ position: 'absolute', top: '-10%', left: '30%', width: '60%', height: '80%', background: 'radial-gradient(circle,rgba(75,134,255,0.1),transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: 'clamp(56px,9vw,124px) clamp(20px,5vw,56px) clamp(48px,7vw,96px)' }}>
           <p style={{ margin: 0, fontSize: 'clamp(14px,1.8vw,18px)', fontWeight: 600, color: '#3A3F49', animation: 'heroIn .7s both' }}>
-React · AI 웹 서비스 부트캠프 · <span style={{ color: C.orange, fontWeight: 800 }}>16챕터 62강의</span> 풀코스
+React · AI 웹 서비스 부트캠프 · <span style={{ color: C.orange, fontWeight: 800 }}>{TOTAL_CHAPTERS}챕터 {TOTAL_LESSONS}강의</span> 풀코스
           </p>
           <h1 style={{ margin: 'clamp(18px,3vw,32px) 0 0', fontWeight: 800, fontSize: 'clamp(46px,12vw,176px)', lineHeight: 0.9, letterSpacing: '-0.045em', color: C.ink, textTransform: 'uppercase' }}>
             <span style={{ display: 'block', fontWeight: 300 }}>DreamIT</span>
@@ -152,7 +152,7 @@ React · AI 웹 서비스 부트캠프 · <span style={{ color: C.orange, fontWe
                 지금 바로<br />시작하는 강의
               </h2>
             </div>
-            <Link to="/curriculum" className="btn-ghost-d" style={{ padding: '13px 28px', borderRadius: 60, border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontSize: 14.5, fontWeight: 600 }}>전체 62개 강의 보기 →</Link>
+            <Link to="/curriculum" className="btn-ghost-d" style={{ padding: '13px 28px', borderRadius: 60, border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontSize: 14.5, fontWeight: 600 }}>전체 {TOTAL_LESSONS}개 강의 보기 →</Link>
           </Reveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 'clamp(14px,1.6vw,22px)' }}>
             {preview.map((ch, i) => (

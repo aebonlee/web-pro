@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { C, grad } from '../theme'
 import Logo from '../components/Logo'
+import { TOTAL_CHAPTERS, TOTAL_LESSONS } from '../data/curriculum'
 import { signIn, useAuth } from '../hooks/useAuth'
 
 export default function Login() {
@@ -30,7 +31,7 @@ export default function Login() {
             웹 개발의 처음부터<br />끝까지, 함께.
           </h2>
           <p style={{ margin: '18px 0 0', maxWidth: 360, fontSize: 15.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.8)' }}>
-            로그인하면 16개 챕터 62개 강의의 학습 진도가 계정에 저장됩니다.
+            로그인하면 {TOTAL_CHAPTERS}개 챕터 {TOTAL_LESSONS}개 강의의 학습 진도가 계정에 저장됩니다.
           </p>
         </div>
       </div>
