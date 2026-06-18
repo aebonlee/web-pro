@@ -158,6 +158,6 @@ export const GUIDES = [
   }
 ];
 
-export const COACHING = GUIDES.filter(g => g.category === coaching);
-export const APPENDIX = GUIDES.filter(g => g.category === appendix);
+export const COACHING = GUIDES.filter(g => g.category === 'coaching');
+export const APPENDIX = GUIDES.filter(g => g.category === 'appendix');
 export const getGuide = (id) => GUIDES.find(g => g.id === id);

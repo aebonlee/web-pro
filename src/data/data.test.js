@@ -3,6 +3,8 @@ import { CHAPTERS, TRACKS, byTrack, getChapter, TOTAL_CHAPTERS, TOTAL_LESSONS } 
 import { QUIZZES, GLOSSARY, quizOf } from './review'
 import { PROJECTS, PROJECT_LEVELS, getProject } from './projects'
 import { LABS } from './labs'
+import { GUIDES, COACHING, APPENDIX, getGuide } from './coaching'
+import { TIPS } from './tips'
 
 const TRACK_IDS = Object.keys(TRACKS) // web, react, ai, ops
 
@@ -97,6 +99,34 @@ describe('labs 커버리지', () => {
     for (const c of CHAPTERS) {
       expect(Array.isArray(LABS[c.id])).toBe(true)
       expect(LABS[c.id].length).toBeGreaterThan(0)
+    }
+  })
+})
+
+describe('coaching·tips 데이터', () => {
+  it('GUIDES가 coaching/appendix로 정확히 분류된다', () => {
+    expect(GUIDES.length).toBeGreaterThan(0)
+    expect(COACHING.length + APPENDIX.length).toBe(GUIDES.length)
+    expect(COACHING.length).toBeGreaterThan(0)
+    expect(APPENDIX.length).toBeGreaterThan(0)
+    for (const g of GUIDES) {
+      expect(['coaching', 'appendix']).toContain(g.category)
+      expect(g.title.length).toBeGreaterThan(0)
+      expect(Array.isArray(g.tags)).toBe(true)
+    }
+  })
+
+  it('가이드 id가 고유하고 getGuide가 동작한다', () => {
+    const ids = GUIDES.map((g) => g.id)
+    expect(new Set(ids).size).toBe(ids.length)
+    expect(getGuide(GUIDES[0].id)).toBe(GUIDES[0])
+    expect(getGuide('없는-id')).toBeUndefined()
+  })
+
+  it('모든 Tip의 출처가 실제 가이드다', () => {
+    for (const t of TIPS) {
+      expect(t.text.length).toBeGreaterThan(0)
+      expect(getGuide(t.sourceId)).toBeTruthy()
     }
   })
 })
