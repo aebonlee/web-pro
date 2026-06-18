@@ -14,8 +14,8 @@ const NAV = [
   { to: '/track/ops', label: '배포', en: 'DEPLOY', track: true },
   { to: '/projects', label: '프로젝트', en: 'PROJECTS' },
   { to: '/quiz', label: '퀴즈', en: 'QUIZ' },
-  { to: '/coaching', label: '코칭', en: 'COACHING' },
   { to: '/resources', label: '자료', en: 'RESOURCES' },
+  { to: '/coaching', label: '코칭', en: 'COACHING' },
 ]
 
 export default function Header() {
