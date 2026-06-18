@@ -27,8 +27,8 @@ jobs:
 
       - run: npm ci
 
-      # OG 이미지 생성 (sharp)
-      - run: npm run og
+      # OG 이미지는 한글 폰트가 있는 로컬에서 생성해 커밋(public/og-image.png).
+      # CI(우분투)에는 한글 폰트가 없어 재생성 시 한글이 깨지므로 여기서 생성하지 않음.
 
       - name: Build
         env:

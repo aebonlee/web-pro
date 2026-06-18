@@ -38,7 +38,7 @@ const svg = `
     <circle cx="22" cy="20" r="17" fill="none" stroke="#ffffff" stroke-width="6.5"/>
     <circle cx="56" cy="20" r="17" fill="none" stroke="url(#logo)" stroke-width="6.5"/>
     <rect x="22" y="15" width="34" height="10" rx="5" fill="#ffffff"/>
-    <text x="96" y="30" font-family="Pretendard, sans-serif" font-size="30" font-weight="800" fill="#ffffff" letter-spacing="1">WEB PRO</text>
+    <text x="96" y="30" font-family="Pretendard, sans-serif" font-size="30" font-weight="800" fill="#ffffff" letter-spacing="1">BOOTCAMP</text>
   </g>
 
   <!-- eyebrow -->
