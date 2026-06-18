@@ -11,7 +11,7 @@ const ACCENT = '#6D5BD0' // 코칭 섹션 강조색(인디고)
 const APPENDIX_GRAD = 'linear-gradient(135deg,#8B7BE0,#5848B8)'
 
 export default function Coaching() {
-  usePageMeta('코칭·가이드', '기술 코칭 4회차와 부록 가이드 9종, 그리고 실전 Tips! 모음.')
+  usePageMeta('코칭·가이드', `기술 코칭 ${COACHING.length}회차와 부록 가이드 ${APPENDIX.length}종, 그리고 실전 Tips! ${TOTAL_TIPS}개.`)
   const [tab, setTab] = useState('coaching')
 
   return (
@@ -81,7 +81,11 @@ function TipsList() {
   return (
     <div>
       <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tip 검색"
-        style={{ width: '100%', maxWidth: 360, padding: '12px 16px', borderRadius: 12, border: `1px solid ${C.line}`, fontSize: 14.5, outline: 'none', background: C.cream, marginBottom: 22 }} />
+        style={{ width: '100%', maxWidth: 360, padding: '12px 16px', borderRadius: 12, border: `1px solid ${C.line}`, fontSize: 14.5, outline: 'none', background: C.cream, marginBottom: 14 }} />
+      <p style={{ margin: '0 0 18px', fontSize: 13.5, color: '#9CA2AD' }}>{filtered.length}개 Tip</p>
+      {filtered.length === 0 && (
+        <div style={{ textAlign: 'center', padding: '48px 20px', color: '#9CA2AD', fontSize: 15 }}>‘{q}’에 대한 Tip이 없습니다.</div>
+      )}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(320px,1fr))', gap: 14 }}>
         {filtered.map((t, i) => (
           <Reveal key={i} delay={(i % 6) * 30} style={{ border: `1px solid ${C.line}`, borderLeft: `4px solid #D97706`, borderRadius: 14, padding: '18px 20px', background: '#fffdf8' }}>

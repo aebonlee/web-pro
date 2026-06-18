@@ -4,8 +4,10 @@ import { C, grad } from '../theme'
 import Logo from '../components/Logo'
 import { TOTAL_CHAPTERS, TOTAL_LESSONS } from '../data/curriculum'
 import { signIn, useAuth } from '../hooks/useAuth'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Login() {
+  usePageMeta('로그인', '구글·카카오 계정으로 로그인하고 학습 진도와 퀴즈 점수를 저장하세요.')
   const nav = useNavigate()
   const { user, loading } = useAuth()
   const [busy, setBusy] = useState('')
@@ -16,7 +18,11 @@ export default function Login() {
   const handle = async (provider) => {
     setErr(''); setBusy(provider)
     const { error } = await signIn(provider)
-    if (error) { setErr(error.message); setBusy('') }
+    if (error) {
+      console.warn('signIn', error.message)
+      setErr('로그인을 시작하지 못했습니다. 잠시 후 다시 시도해 주세요.')
+      setBusy('')
+    }
   }
 
   return (
@@ -59,7 +65,7 @@ export default function Login() {
             <KakaoIcon /> {busy === 'kakao' ? '연결 중…' : '카카오로 계속하기'}
           </button>
 
-          {err && <p style={{ margin: '18px 0 0', color: '#D92D20', fontSize: 13.5, lineHeight: 1.5 }}>로그인 오류: {err}</p>}
+          {err && <p style={{ margin: '18px 0 0', color: '#D92D20', fontSize: 13.5, lineHeight: 1.5 }}>{err}</p>}
 
           <p style={{ margin: '28px 0 0', fontSize: 12.5, color: '#9CA2AD', lineHeight: 1.6 }}>
             계속 진행하면 DreamIT 부트캠프의 서비스 이용에 동의하는 것으로 간주됩니다.

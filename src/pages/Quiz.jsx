@@ -79,6 +79,9 @@ function Glossary() {
         </div>
       </div>
       <p style={{ margin: '0 0 18px', fontSize: 13.5, color: '#9CA2AD' }}>{filtered.length}개 용어</p>
+      {filtered.length === 0 && (
+        <div style={{ textAlign: 'center', padding: '48px 20px', color: '#9CA2AD', fontSize: 15 }}>‘{q}’에 대한 검색 결과가 없습니다.</div>
+      )}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 14 }}>
         {filtered.map((g, i) => {
           const tc = trackColor(g.track)
@@ -147,7 +150,7 @@ function QuizRunner() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const score = useMemo(() => questions.reduce((n, qq, i) => n + (answers[i] === qq.answer ? 1 : 0), 0), [questions, answers, submitted])
+  const score = useMemo(() => questions.reduce((n, qq, i) => n + (answers[i] === qq.answer ? 1 : 0), 0), [questions, answers])
 
   const submit = () => {
     setSubmitted(true)

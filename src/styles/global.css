@@ -21,6 +21,16 @@ ul { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid #1A45D8; outline-offset: 2px; border-radius: 4px; }
 button:focus:not(:focus-visible), a:focus:not(:focus-visible) { outline: none; }
 
+/* 접근성: 모션 최소화 환경에서는 애니메이션/전환 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* 스크롤바 숨김(가로 슬라이더용) */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }

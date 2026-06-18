@@ -15,6 +15,10 @@ import Coaching from './Coaching'
 import NotFound from './NotFound'
 import Login from './Login'
 import Track from './Track'
+import Lesson from './Lesson'
+import ProjectDetail from './ProjectDetail'
+import GuideDetail from './GuideDetail'
+import MyPage from './MyPage'
 
 afterEach(cleanup)
 
@@ -49,14 +53,24 @@ describe('페이지 렌더 스모크(빌드가 못 잡는 런타임 오류 방�
     })
   }
 
-  it('Track(:track) 가 유효 트랙으로 렌더된다', () => {
-    const { container } = render(
-      <Providers path="/track/web">
-        <Routes>
-          <Route path="/track/:track" element={<Track />} />
-        </Routes>
-      </Providers>,
-    )
-    expect(container.firstChild).toBeTruthy()
-  })
+  // 파라미터 라우트 페이지들
+  const PARAM = [
+    ['Track', '/track/web', '/track/:track', Track],
+    ['Lesson', '/lesson/web-01', '/lesson/:id', Lesson],
+    ['ProjectDetail', '/project/p-todo', '/project/:id', ProjectDetail],
+    ['GuideDetail', '/coaching/coach-1', '/coaching/:id', GuideDetail],
+    ['MyPage', '/me', '/me', MyPage],
+  ]
+  for (const [name, path, pattern, Page] of PARAM) {
+    it(`${name} 가 오류 없이 마운트된다`, () => {
+      const { container } = render(
+        <Providers path={path}>
+          <Routes>
+            <Route path={pattern} element={<Page />} />
+          </Routes>
+        </Providers>,
+      )
+      expect(container.firstChild).toBeTruthy()
+    })
+  }
 })

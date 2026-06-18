@@ -5,6 +5,7 @@ import { CHAPTERS, TRACKS, byTrack, TOTAL_CHAPTERS, TOTAL_LESSONS } from '../dat
 import { Eyebrow, ChapterCard } from '../components/ui'
 import Reveal from '../components/Reveal'
 import { useProgress } from '../hooks/useProgress'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const STACK = ['React 19', 'Vite', 'Supabase', 'FastAPI', 'Hugging Face', 'Docker', 'AWS', 'Git · GitHub', 'Nginx', 'PostgreSQL', 'JavaScript', 'REST API']
 
@@ -31,6 +32,7 @@ const FAQS = [
 ]
 
 export default function Home() {
+  usePageMeta(null, `웹 기초(HTML·CSS·JS)부터 React·AI·실전 배포까지 — ${TOTAL_CHAPTERS}개 챕터 ${TOTAL_LESSONS}개 강의의 실무형 웹 개발 학습 플랫폼.`)
   const { doneCount } = useProgress() || {}
   // 메인 커리큘럼 프리뷰: 트랙별로 9장을 뽑아 3×3 정렬
   const preview = [

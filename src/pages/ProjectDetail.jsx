@@ -16,7 +16,6 @@ const TRACK_META = {
   fullstack: { label: '풀스택', color: '#7A3CF0', grad: 'linear-gradient(135deg,#9B6BFF,#6A2BD9)' },
   ops: { label: '배포', color: '#0E8F63', grad: 'linear-gradient(135deg,#22C58A,#0E8F63)' },
 }
-const LEVEL_COLOR = { 입문: '#16A34A', 중급: '#1A45D8', 고급: '#E0470A' }
 const chBadge = (t) => (t === 'ai' ? 'AI' : t === 'ops' ? 'Deploy' : t === 'web' ? 'Web' : 'React')
 
 export default function ProjectDetail() {
