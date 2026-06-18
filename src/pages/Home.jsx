@@ -6,7 +6,7 @@ import { Eyebrow, ChapterCard } from '../components/ui'
 import Reveal from '../components/Reveal'
 import { useProgress } from '../hooks/useProgress'
 
-const STACK = ['React 19', 'Vite', 'Supabase', 'FastAPI', 'Hugging Face', 'Tailwind', 'JavaScript', 'REST API']
+const STACK = ['React 19', 'Vite', 'Supabase', 'FastAPI', 'Hugging Face', 'Docker', 'AWS', 'Git · GitHub', 'Nginx', 'PostgreSQL', 'JavaScript', 'REST API']
 
 const FEATURES = [
   { t: '실무 중심 커리큘럼', d: `JSX 기초부터 인증·배포까지, 현업 프로젝트 흐름 그대로 설계된 ${TOTAL_CHAPTERS}개 챕터.`, orn: 'orn-bowtie.svg' },
@@ -24,9 +24,10 @@ const PROCESS = [
 
 const FAQS = [
   { q: '완전 입문자도 들을 수 있나요?', a: 'React 트랙은 JSX와 개발환경 구성부터 시작합니다. HTML/CSS와 기본 JavaScript만 알면 무리 없이 따라올 수 있도록 단계적으로 구성했습니다.' },
-  { q: '프론트엔드와 AI 중 무엇부터 들어야 하나요?', a: '웹 개발이 처음이라면 React 트랙을 먼저 권장합니다. AI 트랙은 Python과 FastAPI로 진행되며, 모델을 웹 API로 노출하는 백엔드/AI 관점을 다룹니다. 두 트랙은 독립적으로 수강 가능합니다.' },
+  { q: '어떤 트랙부터 들어야 하나요?', a: '웹 개발이 처음이라면 React(프론트엔드) 트랙을 먼저 권장합니다. AI 트랙은 Python·FastAPI로 모델을 웹 API로 노출하는 백엔드/AI 관점을, 배포·협업 트랙은 Git·GitHub과 AWS·Docker 실전 배포를 다룹니다. 세 트랙은 독립적으로 수강할 수 있습니다.' },
   { q: '학습 진도는 저장되나요?', a: '구글 또는 카카오로 로그인하면 섹션 단위 학습 체크가 계정에 저장되어, 트랙별 달성률을 언제든 이어볼 수 있습니다.' },
-  { q: '실습 코드와 자료는 어디서 받나요?', a: '각 강의 상세 페이지에 핵심 포인트와 실습 안내가 정리되어 있으며, 원본 교재(PDF)는 저장소 docs 폴더에서 함께 제공됩니다.' },
+  { q: '배운 내용을 어떻게 점검하나요?', a: '강의마다 핵심 용어 정리와 객관식 퀴즈로 이해도를 직접 검증하고, 입문·중급·고급 프로젝트 예제로 실전에 적용해볼 수 있습니다.' },
+  { q: '강의 자료와 코드는 어디서 보나요?', a: '모든 강의 본문·예제 코드·실습이 웹페이지로 제공되어, 별도 파일 없이 강의 상세 페이지에서 바로 학습하고 코드를 복사해 사용할 수 있습니다.' },
 ]
 
 export default function Home() {
@@ -41,7 +42,7 @@ export default function Home() {
         <div style={{ position: 'absolute', top: '-10%', left: '30%', width: '60%', height: '80%', background: 'radial-gradient(circle,rgba(75,134,255,0.1),transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: 'clamp(56px,9vw,124px) clamp(20px,5vw,56px) clamp(48px,7vw,96px)' }}>
           <p style={{ margin: 0, fontSize: 'clamp(14px,1.8vw,18px)', fontWeight: 600, color: '#3A3F49', animation: 'heroIn .7s both' }}>
-React · AI 웹 서비스 부트캠프 · <span style={{ color: C.orange, fontWeight: 800 }}>{TOTAL_CHAPTERS}챕터 {TOTAL_LESSONS}강의</span> 풀코스
+React · AI · 실전 배포 부트캠프 · <span style={{ color: C.orange, fontWeight: 800 }}>{TOTAL_CHAPTERS}챕터 {TOTAL_LESSONS}강의</span> 풀코스
           </p>
           <h1 style={{ margin: 'clamp(18px,3vw,32px) 0 0', fontWeight: 800, fontSize: 'clamp(46px,12vw,176px)', lineHeight: 0.9, letterSpacing: '-0.045em', color: C.ink, textTransform: 'uppercase' }}>
             <span style={{ display: 'block', fontWeight: 300 }}>DreamIT</span>
@@ -158,6 +159,33 @@ React · AI 웹 서비스 부트캠프 · <span style={{ color: C.orange, fontWe
             {preview.map((ch, i) => (
               <Reveal key={ch.id} delay={(i % 3) * 70}>
                 <ChapterCard ch={ch} progress={doneCount ? { done: doneCount(ch.id) } : null} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== EXPLORE (프로젝트·퀴즈·자료) ===== */}
+      <section style={{ background: '#fff', padding: 'clamp(60px,9vw,120px) 0 0' }}>
+        <div style={{ maxWidth: 1480, margin: '0 auto', padding: '0 clamp(20px,5vw,56px)' }}>
+          <Reveal style={{ marginBottom: 'clamp(28px,4vw,44px)' }}>
+            <Eyebrow>EXPLORE</Eyebrow>
+            <h2 style={{ margin: '14px 0 0', fontSize: 'clamp(26px,4.5vw,52px)', fontWeight: 800, letterSpacing: '-0.035em', lineHeight: 1 }}>학습을 넘어, 실력으로</h2>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 'clamp(14px,1.6vw,20px)' }}>
+            {[
+              { to: '/projects', ey: 'PROJECTS', t: '프로젝트로 완성', d: '입문·중급·고급 18개 실전 프로젝트로 배운 내용을 직접 만들어 봅니다.', g: grad.blue, orn: 'orn-rings.svg' },
+              { to: '/quiz', ey: 'REVIEW · QUIZ', t: '용어 · 퀴즈로 점검', d: '핵심 용어 정리와 객관식 퀴즈로 이해도를 스스로 검증합니다.', g: 'linear-gradient(135deg,#22C58A,#0E8F63)', orn: 'orn-flower.svg' },
+              { to: '/resources', ey: 'RESOURCES', t: '자료 · 실습 모아보기', d: '전 챕터의 강의 목차와 실습 예제를 한곳에서 살펴봅니다.', g: grad.orange, orn: 'orn-tunnel.svg' },
+            ].map((c, i) => (
+              <Reveal key={c.to} delay={i * 80}>
+                <Link to={c.to} className="card-link" style={{ display: 'flex', flexDirection: 'column', minHeight: 230, background: c.g, color: '#fff', borderRadius: 24, padding: 'clamp(26px,3vw,38px)', position: 'relative', overflow: 'hidden' }}>
+                  <img src={`/assets/${c.orn}`} alt="" style={{ position: 'absolute', right: -24, bottom: -24, width: 170, height: 170, opacity: 0.22, filter: 'brightness(2)' }} />
+                  <div style={{ position: 'relative', fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', opacity: 0.85 }}>{c.ey}</div>
+                  <h3 style={{ position: 'relative', margin: '14px 0 0', fontSize: 'clamp(22px,2.6vw,28px)', fontWeight: 800, letterSpacing: '-0.01em' }}>{c.t}</h3>
+                  <p style={{ position: 'relative', margin: '12px 0 auto', fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.9)' }}>{c.d}</p>
+                  <span style={{ position: 'relative', width: 44, height: 44, borderRadius: 99, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, marginTop: 18 }}>→</span>
+                </Link>
               </Reveal>
             ))}
           </div>
