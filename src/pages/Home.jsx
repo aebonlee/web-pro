@@ -182,6 +182,7 @@ export default function Home() {
             {[
               { to: '/projects', ey: 'PROJECTS', t: '프로젝트로 완성', d: '입문·중급·고급 18개 실전 프로젝트로 배운 내용을 직접 만들어 봅니다.', g: grad.blue, orn: 'orn-rings.svg' },
               { to: '/quiz', ey: 'REVIEW · QUIZ', t: '용어 · 퀴즈로 점검', d: '핵심 용어 정리와 객관식 퀴즈로 이해도를 스스로 검증합니다.', g: 'linear-gradient(135deg,#22C58A,#0E8F63)', orn: 'orn-flower.svg' },
+              { to: '/coaching', ey: 'COACHING', t: '코칭 · 가이드 · Tips', d: '기술 코칭과 실무 부록 가이드, 실전 Tips!를 한곳에서 만나보세요.', g: 'linear-gradient(135deg,#8B7BE0,#5848B8)', orn: 'orn-bowtie.svg' },
               { to: '/resources', ey: 'RESOURCES', t: '자료 · 실습 모아보기', d: '전 챕터의 강의 목차와 실습 예제를 한곳에서 살펴봅니다.', g: grad.orange, orn: 'orn-tunnel.svg' },
             ].map((c, i) => (
               <Reveal key={c.to} delay={i * 80}>

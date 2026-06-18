@@ -14,6 +14,7 @@ export default defineConfig({
   ].filter(Boolean),
   test: {
     environment: 'node',
-    include: ['src/**/*.test.js'],
+    include: ['src/**/*.test.{js,jsx}'],
+    setupFiles: ['src/test-setup.js'],
   },
 })
