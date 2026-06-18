@@ -3,6 +3,7 @@ import { C } from '../theme'
 import { CHAPTERS, TRACKS, byTrack } from '../data/curriculum'
 import { Eyebrow, ChapterCard } from '../components/ui'
 import Reveal from '../components/Reveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 import { useProgress } from '../hooks/useProgress'
 
 const FILTERS = [
@@ -14,6 +15,7 @@ const FILTERS = [
 ]
 
 export default function Curriculum() {
+  usePageMeta('전체 커리큘럼', '웹 기초·React·AI·배포 4개 트랙 27개 챕터 137개 강의를 한눈에.')
   const [f, setF] = useState('all')
   const { doneCount } = useProgress() || {}
   const list = f === 'all' ? CHAPTERS : byTrack(f)

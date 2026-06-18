@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "og": "node scripts/gen-og.mjs"
+    "og": "node scripts/gen-og.mjs",
+    "test": "vitest run",
+    "analyze": "ANALYZE=1 vite build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
@@ -21,7 +23,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
+    "rollup-plugin-visualizer": "^5.14.0",
     "sharp": "^0.33.5",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "vitest": "^2.1.9"
   }
 }

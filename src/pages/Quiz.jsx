@@ -5,6 +5,7 @@ import { CHAPTERS, TRACKS, getChapter } from '../data/curriculum'
 import { QUIZZES, GLOSSARY, quizOf, TOTAL_QUIZ, TOTAL_TERMS } from '../data/review'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 import { useAuth } from '../hooks/useAuth'
 import { fetchQuizResults, saveQuizResult } from '../lib/db'
 
@@ -12,6 +13,7 @@ import { fetchQuizResults, saveQuizResult } from '../lib/db'
 const TRACK_BADGE = { web: 'Web', react: 'React', ai: 'AI', ops: 'Deploy' }
 
 export default function Quiz() {
+  usePageMeta('복습·퀴즈', '핵심 용어 216개와 퀴즈 135문항으로 이해도를 검증하세요.')
   const [tab, setTab] = useState('terms')
   return (
     <main style={{ background: '#fff', minHeight: '100vh' }}>

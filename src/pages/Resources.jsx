@@ -4,8 +4,10 @@ import { CHAPTERS, TRACKS, byTrack } from '../data/curriculum'
 import { labsOf, totalLabs } from '../data/labs'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Resources() {
+  usePageMeta('학습 자료·실습', '전 챕터 강의 목차와 실습 예제를 한곳에서.')
   const totalSec = CHAPTERS.reduce((n, c) => n + c.sections.length, 0)
 
   return (

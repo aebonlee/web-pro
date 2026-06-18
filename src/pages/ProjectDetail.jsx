@@ -7,6 +7,7 @@ import { DEMOS } from '../demos'
 import { getChapter } from '../data/curriculum'
 import { Eyebrow, TagRow } from '../components/ui'
 import CodeBlock from '../components/CodeBlock'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const TRACK_META = {
   web: { label: '웹 기초', color: '#7C3AED', grad: 'linear-gradient(135deg,#A78BFA,#7C3AED)' },
@@ -22,6 +23,7 @@ export default function ProjectDetail() {
   const { id } = useParams()
   const p = getProject(id)
   const [tab, setTab] = useState(0)
+  usePageMeta(p ? `${p.title} 프로젝트` : null, p?.summary)
   if (!p) return <Navigate to="/projects" replace />
 
   const tm = TRACK_META[p.track]

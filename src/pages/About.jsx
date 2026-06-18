@@ -3,6 +3,7 @@ import { C, grad } from '../theme'
 import { CHAPTERS } from '../data/curriculum'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const VALUES = [
   { t: '만들 수 있게 되는 학습', d: '이론을 위한 이론이 아니라, 강의가 끝나면 직접 서비스를 만들 수 있도록 실습 중심으로 설계했습니다.' },
@@ -11,6 +12,7 @@ const VALUES = [
 ]
 
 export default function About() {
+  usePageMeta('소개', 'DreamIT 부트캠프의 학습 철학과 4개 트랙 소개.')
   const totalSec = CHAPTERS.reduce((n, c) => n + c.sections.length, 0)
   return (
     <main style={{ background: '#fff' }}>

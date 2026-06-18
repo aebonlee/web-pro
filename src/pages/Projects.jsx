@@ -5,6 +5,7 @@ import { PROJECTS, PROJECT_LEVELS, byLevel, TOTAL_PROJECTS } from '../data/proje
 import { getChapter } from '../data/curriculum'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const TRACK_META = {
   web: { label: '웹 기초', color: '#7C3AED', grad: 'linear-gradient(135deg,#A78BFA,#7C3AED)' },
@@ -18,6 +19,7 @@ const LEVEL_COLOR = { 입문: '#16A34A', 중급: '#1A45D8', 고급: '#E0470A' }
 const FILTERS = ['전체', ...PROJECT_LEVELS]
 
 export default function Projects() {
+  usePageMeta('프로젝트', '입문·중급·고급 18개 실전 프로젝트 — 실제 구현 코드와 동작 데모 제공.')
   const [f, setF] = useState('전체')
   const list = f === '전체' ? PROJECTS : byLevel(f)
 

@@ -9,6 +9,7 @@ import Markdown, { sectionAnchor } from '../components/Markdown'
 import Reveal from '../components/Reveal'
 import { useProgress } from '../hooks/useProgress'
 import { useAuth } from '../hooks/useAuth'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Lesson() {
   const { id } = useParams()
@@ -37,6 +38,7 @@ export default function Lesson() {
     return () => clearTimeout(t)
   }, [loc.hash, content])
 
+  usePageMeta(ch?.title, ch?.summary)
   if (!ch) return <Navigate to="/curriculum" replace />
 
   const tr = TRACKS[ch.track]

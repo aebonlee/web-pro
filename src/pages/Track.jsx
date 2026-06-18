@@ -4,11 +4,13 @@ import { TRACKS, byTrack } from '../data/curriculum'
 import { Eyebrow, ChapterCard } from '../components/ui'
 import Reveal from '../components/Reveal'
 import { useProgress } from '../hooks/useProgress'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Track() {
   const { track } = useParams()
   const tr = TRACKS[track]
   const { doneCount } = useProgress() || {}
+  usePageMeta(tr ? `${tr.label} 트랙` : null, tr?.desc)
   if (!tr) return <Navigate to="/curriculum" replace />
   const chs = byTrack(track)
   const totalSec = chs.reduce((n, c) => n + c.sections.length, 0)
