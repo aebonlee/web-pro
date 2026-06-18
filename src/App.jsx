@@ -12,6 +12,8 @@ const Resources = lazy(() => import('./pages/Resources'))
 const Projects = lazy(() => import('./pages/Projects'))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'))
 const Quiz = lazy(() => import('./pages/Quiz'))
+const Coaching = lazy(() => import('./pages/Coaching'))
+const GuideDetail = lazy(() => import('./pages/GuideDetail'))
 const Login = lazy(() => import('./pages/Login'))
 const MyPage = lazy(() => import('./pages/MyPage'))
 const About = lazy(() => import('./pages/About'))
@@ -49,6 +51,8 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/coaching" element={<Coaching />} />
+          <Route path="/coaching/:id" element={<GuideDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />

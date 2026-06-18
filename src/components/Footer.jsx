@@ -21,6 +21,7 @@ export default function Footer() {
                 <Link to="/curriculum">전체 커리큘럼</Link>
                 <Link to="/projects">프로젝트 예제</Link>
                 <Link to="/quiz">복습 · 퀴즈</Link>
+                <Link to="/coaching">코칭 · 가이드</Link>
                 <Link to="/resources">자료 · 실습 예제</Link>
                 <Link to="/me">내 학습 현황</Link>
               </div>

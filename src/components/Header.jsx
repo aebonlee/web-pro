@@ -15,6 +15,7 @@ const NAV = [
   { to: '/resources', label: 'RESOURCES', ko: '자료·실습' },
   { to: '/projects', label: 'PROJECTS', ko: '프로젝트' },
   { to: '/quiz', label: 'QUIZ', ko: '복습·퀴즈' },
+  { to: '/coaching', label: 'COACHING', ko: '코칭·가이드' },
 ]
 
 export default function Header() {
