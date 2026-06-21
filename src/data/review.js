@@ -1197,6 +1197,63 @@ export const QUIZZES = {
       "explain": "무료 플랜은 공개 저장소만 가능하며 48시간 미사용 시 슬립되고, 커스텀 도메인·비공개·지속 실행은 상위 플랜이 필요하다."
     }
   ],
+  "ai-09": [
+    {
+      "q": "FastAPI에서 함수 인자가 경로의 {중괄호}에 없고 기본값이 있을 때 그 인자는 무엇이 되는가?",
+      "options": [
+        "Path 매개변수",
+        "Query 매개변수",
+        "요청 헤더",
+        "응답 본문"
+      ],
+      "answer": 1,
+      "explain": "경로의 {...}에 있으면 Path 매개변수, 없으면 Query 매개변수가 된다. 기본값을 주면 선택적 Query 매개변수가 된다."
+    },
+    {
+      "q": "Pydantic 검증에 실패했을 때 FastAPI가 자동으로 반환하는 HTTP 상태 코드는?",
+      "options": [
+        "400 Bad Request",
+        "404 Not Found",
+        "422 Unprocessable Entity",
+        "500 Internal Server Error"
+      ],
+      "answer": 2,
+      "explain": "타입·길이·형식 등 Pydantic 입력 검증에 실패하면 FastAPI가 어떤 필드가 왜 실패했는지를 담아 422를 자동으로 반환한다."
+    },
+    {
+      "q": "UserCreate에는 password 필드가 있지만 UserResponse에는 없도록 스키마를 분리하는 주된 이유는?",
+      "options": [
+        "코드를 짧게 만들기 위해",
+        "응답에 비밀번호가 노출되는 것을 구조적으로 차단하기 위해",
+        "DB 용량을 줄이기 위해",
+        "검증 속도를 높이기 위해"
+      ],
+      "answer": 1,
+      "explain": "입력으로는 비밀번호를 받되 응답 스키마에서는 제외해, response_model이 비밀번호를 자동으로 걸러내도록 한다."
+    },
+    {
+      "q": "database.py의 get_db 제너레이터에서 finally의 db.close()가 하는 역할은?",
+      "options": [
+        "DB 테이블을 삭제한다",
+        "요청 처리가 끝나면 세션을 닫아 세션 누수를 막는다",
+        "트랜잭션을 롤백한다",
+        "새 연결 풀을 생성한다"
+      ],
+      "answer": 1,
+      "explain": "Depends(get_db)로 주입된 세션은 요청 처리 후 finally의 close()로 반드시 정리되어, 세션 누수를 구조적으로 방지한다."
+    },
+    {
+      "q": "React(localhost:3000)에서 FastAPI(localhost:8000)로의 요청을 가능하게 하려면 FastAPI에 무엇을 설정해야 하는가?",
+      "options": [
+        "CORSMiddleware에 allow_origins 추가",
+        "라우터의 prefix 변경",
+        "Pydantic 스키마 추가",
+        "pytest 테스트 작성"
+      ],
+      "answer": 0,
+      "explain": "출처(Origin)가 다르면 브라우저가 차단하므로, CORSMiddleware의 allow_origins에 프론트엔드 주소를 등록해야 한다."
+    }
+  ],
   "ops-01": [
     {
       "q": "Git과 GitHub의 관계를 가장 정확하게 설명한 것은?",
@@ -2548,6 +2605,48 @@ export const GLOSSARY = [
     "term": "Docker Compose",
     "def": "여러 컨테이너를 하나의 YAML 파일로 정의해 함께 실행하는 도구다. FastAPI 앱 + Nginx 리버스 프록시 + Prometheus + Grafana를 한 번에 구성·기동할 수 있다.",
     "chapter": "ai-08",
+    "track": "ai"
+  },
+  {
+    "term": "APIRouter",
+    "def": "FastAPI에서 리소스별로 라우터를 분리하는 클래스. prefix로 공통 경로를, tags로 Swagger 문서의 그룹을 지정해 main.py의 비대화를 막고 유지보수성을 높인다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "Pydantic 스키마",
+    "def": "요청/응답 데이터의 형식을 강제하는 데이터 계약서. Field 제약·EmailStr·field_validator로 입력을 자동 검증하고, 실패 시 422를 반환한다. Create와 Response를 분리해 비밀번호 노출을 차단한다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "의존성 주입(Depends)",
+    "def": "FastAPI가 라우터 함수에 필요한 객체를 자동으로 생성·주입하는 메커니즘. get_db 제너레이터를 Depends로 주입하면 요청마다 DB 세션을 열고 응답 후 자동으로 닫아 세션 누수를 막는다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "Repository 패턴",
+    "def": "DB 처리 로직(crud/)과 라우팅 로직(routers/)을 분리하는 설계. 라우터는 요청·응답에만 집중하고 실제 DB 조작은 crud 함수가 담당해 테스트와 재사용이 쉬워진다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "response_model",
+    "def": "라우터의 응답을 지정한 Pydantic 스키마 형식으로 자동 변환·검증하는 옵션. Swagger 문서에 응답 형식이 표시되고, 스키마에 없는 필드(예: password)는 응답에서 자동으로 제외된다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "CORS(Cross-Origin Resource Sharing)",
+    "def": "브라우저가 출처(Origin)가 다른 서버로의 요청을 제어하는 보안 정책. React(3000)→FastAPI(8000) 연동 시 CORSMiddleware의 allow_origins에 프론트엔드 주소를 등록해야 요청이 허용된다.",
+    "chapter": "ai-09",
+    "track": "ai"
+  },
+  {
+    "term": "TestClient",
+    "def": "FastAPI 앱을 실제 서버로 띄우지 않고 코드 안에서 직접 호출해 테스트하는 도구. pytest와 함께 CRUD·404·비밀번호 미노출 등을 자동 검증한다.",
+    "chapter": "ai-09",
     "track": "ai"
   },
   {

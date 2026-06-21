@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const BASE = 'DreamIT 부트캠프'
-const DEFAULT_DESC = '웹 기초(HTML·CSS·JS)부터 React 프론트엔드, 생성형 AI 웹 서비스, 실전 배포까지 — 27개 챕터 137개 강의의 실무형 웹 개발 학습 플랫폼.'
+const DEFAULT_DESC = '웹 기초(HTML·CSS·JS)부터 React 프론트엔드, 생성형 AI 웹 서비스, 실전 배포까지 — 28개 챕터 146개 강의의 실무형 웹 개발 학습 플랫폼.'
 
 // 라우트(페이지)별로 document.title 과 meta description 을 동적으로 갱신.
 // SPA 내 탐색·브라우저 탭·북마크 품질을 높인다.

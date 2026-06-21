@@ -1282,6 +1282,116 @@ export const CHAPTERS = [
     ]
   },
   {
+    "id": "ai-09",
+    "track": "ai",
+    "no": 9,
+    "title": "FastAPI 백엔드 완성",
+    "summary": "AI 모델 서빙을 넘어 FastAPI를 백엔드 프레임워크로서 정공법으로 다룹니다. 라우터·HTTP 메서드, Pydantic 데이터 검증, SQLAlchemy ORM과 DB 연동, Repository 패턴 CRUD API, React 연동(CORS)과 CRUD UI, pytest 테스트, Docker 배포까지 실무 백엔드 한 사이클 전체를 직접 구현합니다. User·Item 두 리소스의 완전한 CRUD API를 만들고 React와 연동한 뒤 도서 관리 API 종합 실습으로 마무리합니다.",
+    "duration": "약 5시간",
+    "level": "실전",
+    "tags": [
+      "FastAPI",
+      "SQLAlchemy",
+      "Pydantic",
+      "CRUD",
+      "React 연동",
+      "pytest",
+      "Docker"
+    ],
+    "sections": [
+      {
+        "no": "9.1",
+        "title": "FastAPI 개요와 개발 환경 설정",
+        "summary": "FastAPI를 Flask·Django와 비교해 API 특화 프레임워크로서의 강점을 이해하고, 가상환경·requirements.txt로 개발 환경을 구성한 뒤 첫 서버를 띄워 자동 문서(Swagger/ReDoc)를 확인합니다.",
+        "points": [
+          "타입 선언이 곧 검증·문서가 되는 FastAPI의 핵심 철학",
+          "venv 가상환경 생성과 requirements.txt 일괄 설치(bcrypt 4.x 고정 함정)",
+          "uvicorn main:app --reload로 서버 실행과 /docs·/redoc 자동 문서 확인"
+        ]
+      },
+      {
+        "no": "9.2",
+        "title": "라우터와 HTTP 메서드",
+        "summary": "GET/POST/PUT/PATCH/DELETE 데코레이터로 REST 동작을 구분하고, Path/Query 매개변수의 차이를 익히며, APIRouter로 리소스별 라우터를 분리합니다.",
+        "points": [
+          "HTTP 메서드별 데코레이터와 용도(@app.get/post/put/patch/delete)",
+          "Path 매개변수(/users/{id})와 Query 매개변수(?skip=&limit=)의 구분",
+          "APIRouter(prefix·tags)로 라우터를 분리해 유지보수성 향상"
+        ]
+      },
+      {
+        "no": "9.3",
+        "title": "Pydantic 데이터 검증",
+        "summary": "schemas.py에 요청/응답 스키마를 정의해 입력 검증을 자동화합니다. Field 제약·EmailStr·field_validator를 활용하고 Create와 Response 스키마를 분리해 비밀번호 노출을 차단합니다.",
+        "points": [
+          "Field(min_length·gt 등) 제약과 EmailStr·field_validator로 입력 검증",
+          "model_config from_attributes로 ORM 객체를 응답 모델로 자동 변환",
+          "Create/Response 스키마 분리 — 검증 실패 시 422 자동 반환"
+        ]
+      },
+      {
+        "no": "9.4",
+        "title": "SQLAlchemy와 데이터베이스 연동",
+        "summary": "개발용 SQLite와 운영용 MySQL을 비교하고, database.py에 engine·SessionLocal·get_db를 구성합니다. models.py에 ORM 모델과 1:N 관계를 정의하고 의존성 주입으로 세션을 관리합니다.",
+        "points": [
+          "SQLite(개발)↔MySQL(운영) URL만 교체하는 ORM의 이점",
+          "get_db 제너레이터 + Depends로 세션 누수를 막는 의존성 주입 패턴",
+          "Column·ForeignKey·relationship(back_populates)로 1:N 관계 모델링"
+        ]
+      },
+      {
+        "no": "9.5",
+        "title": "CRUD API 완성 — Repository 패턴",
+        "summary": "DB 처리(crud/)와 라우팅(routers/)을 분리하는 Repository 패턴으로 User·Item 두 리소스의 완전한 CRUD API를 완성합니다. response_model·HTTPException·상태 코드를 적용하고 main.py로 통합합니다.",
+        "points": [
+          "crud 계층에 DB 로직 분리, bcrypt 해싱과 add·commit·refresh 흐름",
+          "response_model로 응답 자동 변환·검증, 비밀번호 노출 차단과 부분 수정 처리",
+          "main.py에 CORS·테이블 생성·라우터 등록 통합과 HTTP 상태 코드 정리"
+        ]
+      },
+      {
+        "no": "9.6",
+        "title": "React 연동 — CORS와 API 호출",
+        "summary": "출처가 다른 React(3000)→FastAPI(8000) 요청을 막는 CORS를 이해하고, React 프로젝트에 axios를 설치해 itemApi.js에 CRUD 호출 함수를 모읍니다.",
+        "points": [
+          "CORS 정책과 main.py의 CORSMiddleware 설정(allow_origins)",
+          "create-react-app + axios로 프론트엔드 환경 구성",
+          "itemApi.js에 fetch/create/update/delete 호출 함수 분리와 Preflight 확인"
+        ]
+      },
+      {
+        "no": "9.7",
+        "title": "React CRUD UI 구현",
+        "summary": "ItemList·ItemForm·App 세 컴포넌트로 복사 후 바로 동작하는 CRUD UI를 완성합니다. 로딩·에러·빈 목록 상태를 처리하고 등록/수정 모드를 하나의 폼으로 다룹니다.",
+        "points": [
+          "ItemList: refreshKey 기반 새로고침과 로딩·에러·빈 목록 상태 처리",
+          "ItemForm: editItem 유무로 등록/수정 모드를 겸하는 단일 폼",
+          "App: editItem·refreshKey 상태로 두 컴포넌트를 연결하는 최종 조합"
+        ]
+      },
+      {
+        "no": "9.8",
+        "title": "테스트와 Docker 배포",
+        "summary": "pytest + TestClient로 서버를 띄우지 않고 엔드포인트를 검증하고(비밀번호 미노출 포함), Dockerfile로 애플리케이션을 컨테이너화해 어디서나 동일하게 실행합니다.",
+        "points": [
+          "TestClient로 CRUD·404·비밀번호 미노출을 자동 검증하는 pytest 작성",
+          "pytest -v / -k 옵션으로 선택 실행",
+          "Dockerfile 레이어 캐싱 전략과 docker build·run으로 컨테이너 배포"
+        ]
+      },
+      {
+        "no": "9.9",
+        "title": "종합 실습 프로젝트 — 도서 관리 API",
+        "summary": "앞에서 배운 모든 것을 합쳐 인증(JWT)과 Book CRUD를 결합한 도서 관리 API를 설계·구현합니다. 명세·DB 스키마·구현 매핑·최종 평가 기준을 제시합니다.",
+        "points": [
+          "엔드포인트 명세(회원가입·로그인·도서 CRUD·검색)와 인증 필요 구분",
+          "users·books 테이블 설계와 owner_id 본인 확인 로직",
+          "Item 패턴을 Book으로 응용하는 구현 가이드와 5대 최종 평가 기준"
+        ]
+      }
+    ]
+  },
+  {
     "id": "ops-01",
     "track": "ops",
     "no": 1,

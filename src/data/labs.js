@@ -75,6 +75,13 @@ export const LABS = {
     { title: 'Spaces · Render · AWS 배포', desc: '여러 호스팅에 모델 API를 실제로 배포합니다.', stack: ['HF Spaces', 'Render', 'AWS'] },
     { title: 'API 모니터링 & 최적화', desc: 'Gunicorn 워커와 모니터링으로 운영 성능을 최적화합니다.', stack: ['Gunicorn'] },
   ],
+  'ai-09': [
+    { title: 'Pydantic 스키마로 입력 검증', desc: 'UserCreate/ItemCreate에 Field·EmailStr·field_validator를 적용해 잘못된 입력이 422로 거부되는지 확인합니다.', stack: ['Pydantic', 'FastAPI'] },
+    { title: 'SQLAlchemy CRUD API 완성', desc: 'database·models·crud·routers를 분리해 User·Item 두 리소스의 완전한 CRUD를 Swagger UI에서 테스트합니다.', stack: ['SQLAlchemy', 'CRUD', 'Repository 패턴'] },
+    { title: 'React 연동 아이템 관리 UI', desc: 'CORS 허용 후 axios로 ItemList·ItemForm을 연결해 목록·등록·수정·삭제 UI를 동작시킵니다.', stack: ['React', 'axios', 'CORS'] },
+    { title: 'pytest 검증 & Docker 배포', desc: 'TestClient로 CRUD·404·비밀번호 미노출을 검증하고 Dockerfile로 컨테이너 이미지를 빌드·실행합니다.', stack: ['pytest', 'Docker'] },
+    { title: '종합 실습: 도서 관리 API', desc: 'JWT 인증과 Book CRUD·검색을 결합해 본인만 수정·삭제 가능한 도서 관리 API를 설계·구현합니다.', stack: ['FastAPI', 'JWT', 'CRUD'] },
+  ],
 
   // ===== 웹 기초 =====
   'web-01': [

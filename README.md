@@ -1,6 +1,6 @@
 # DreamIT 부트캠프 — 웹개발 학습 플랫폼
 
-웹 기초(HTML·CSS·JS)부터 React 프론트엔드, 생성형 AI 웹 서비스, 실전 배포까지 — **4개 트랙 · 27개 챕터 · 137개 강의**로 완성하는 실무형 웹 개발 학습 플랫폼.
+웹 기초(HTML·CSS·JS)부터 React 프론트엔드, 생성형 AI 웹 서비스, 실전 배포까지 — **4개 트랙 · 28개 챕터 · 146개 강의**로 완성하는 실무형 웹 개발 학습 플랫폼.
 
 🔗 **https://bootcamp.dreamitbiz.com**
 
@@ -19,7 +19,7 @@ NOVAWORKS 디자인 아티팩트(블루 그라데이션 + 오렌지 포인트, P
 |------|------|------|
 | **웹 기초** | HTML 구조 · CSS 기초 · CSS 레이아웃 · JS 문법 · JS와 브라우저(DOM/이벤트/fetch) | 5 |
 | **React 프론트엔드** | JSX · Props/State · UI · 상태관리 · API/인증 · 설계 · 배포 · 실무 | 8 |
-| **AI 웹 서비스** | FastAPI/Hugging Face · Transformers · NLP · 이미지생성 · 음성 · CV · 멀티모달 · 배포운영 | 8 |
+| **AI 웹 서비스** | FastAPI/Hugging Face · Transformers · NLP · 이미지생성 · 음성 · CV · 멀티모달 · 배포운영 · FastAPI 백엔드 완성(DB·CRUD·React연동) | 9 |
 | **실전 배포·협업** | Git·GitHub · AI챗봇 배포 · EC2/Docker/WinSCP · 프레임워크 AWS 배포 · 풀스택·MSA | 6 |
 
 ## 주요 기능

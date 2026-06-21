@@ -1,0 +1,35 @@
+# 개발일지 — AI 트랙 신규 챕터 ai-09 "FastAPI 백엔드 완성" 추가
+
+**날짜:** 2026-06-21
+**작업자:** Claude Code (with DreamIT Biz)
+**저장소:** github.com/aebonlee/bootcamp · **배포:** https://bootcamp.dreamitbiz.com
+
+---
+
+## 1. 목표
+- 신규 학습자료 `docs/FastAPI_교안_V9_완성본.pdf`(24p, 8챕터+부록)를 사이트 콘텐츠로 반영
+- AI 웹 서비스 트랙에 **FastAPI 백엔드 정공법** 전용 챕터 신설(운영자 결정: "새 챕터 추가")
+
+## 2. 자료 분석 — 교안 구성
+"FastAPI 백엔드 개발 완성 과정": CH01 개요·환경 → CH02 라우터·HTTP메서드 → CH03 Pydantic 검증 → CH04 SQLAlchemy·DB → CH05 CRUD API 완성(Repository 패턴) → CH06 React 연동(CORS) → CH07 React CRUD UI → CH08 pytest·Docker + 부록(도서 관리 API 종합실습).
+- 기존 AI 트랙(ai-01~08)은 **Hugging Face/모델 중심**이라 DB·CRUD·Pydantic 검증·React 연동·pytest·Docker가 체계적으로 부재 → 교안이 정확히 그 빈틈을 보강.
+
+## 3. 구현 내역
+| 영역 | 파일 | 설명 |
+|------|------|------|
+| 본문 | `src/content/ai-09.md` | 교안 CH01~08 + 부록을 9.1~9.9 섹션으로 작성(앵커 `s-9.1`~`s-9.9` 매칭). 기존 챕터 문체/코드주석 스타일 준수, 교안 코드 충실 재현 |
+| 커리큘럼 | `src/data/curriculum.js` | `ai-09` 챕터 엔트리(track ai, no 9, 9개 섹션, 난이도 실전, 약 5시간) — ai-08 블록 직후 삽입 |
+| 실습 랩 | `src/data/labs.js` | `LABS['ai-09']` 5종(Pydantic 검증·CRUD·React연동·pytest/Docker·도서관리 종합) |
+| 복습 퀴즈 | `src/data/review.js` | `QUIZZES['ai-09']` 5문항(Path/Query·422·스키마분리·get_db·CORS) |
+| 용어집 | `src/data/review.js` | `GLOSSARY` ai-09 용어 7종(APIRouter·Pydantic 스키마·Depends·Repository 패턴·response_model·CORS·TestClient) |
+| 카운트 | `README.md`, `usePageMeta.js`, `Curriculum.jsx` | 하드코딩된 챕터/강의 수 갱신, AI 트랙 행 8→9 |
+
+## 4. 정합성 / 검증
+- 총계: **28개 챕터 · 146개 강의**(AI 트랙 8→9). 대부분의 사이트 표기는 `CHAPTERS`에서 동적 계산되어 자동 반영(Home·Login·Footer·About·Resources).
+- 섹션 no ↔ 본문 `##` 헤딩 9/9 매칭 확인(TOC 스크롤 앵커 정상).
+- `npx vitest run src/data/data.test.js` → **15/15 통과**(labs·quiz 챕터 커버리지 포함).
+- `npm run build` → 성공, `dist/assets/ai-09-*.js` 청크(lazy 본문) 정상 생성.
+
+## 5. 비고
+- 원본 PDF(`docs/FastAPI_교안_V9_완성본.pdf`)는 docs에 보관(비배포 자료).
+- ai-09는 모델 데모를 넘어 사용자·데이터·인증을 갖춘 실서비스로 확장하는 백엔드 한 사이클을 담당.
