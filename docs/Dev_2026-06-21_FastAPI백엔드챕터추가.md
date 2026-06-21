@@ -69,6 +69,7 @@
 - `src/components/HeroCanvas.jsx` 신설: 브랜드 블루/오렌지 파티클이 떠다니며 가까운 점끼리 선 연결, 마우스 근처로 끌림+연결선(pointermove). silk.svg·라디얼 그라데이션 위·콘텐츠 아래에 배치, `pointer-events:none`으로 클릭 통과.
 - 품질: `prefers-reduced-motion` 시 1프레임 정적 렌더, DPR 보정(상한 2), 면적 비례 점 개수(26~70), rAF·리사이즈·언마운트 정리. jsdom 등 캔버스 미지원 환경 가드(getContext/matchMedia) → 렌더 테스트 안전.
 - 검증: render.test 14/14, build OK, 로컬 프리뷰에서 캔버스 마운트·마우스 인터랙션·텍스트 가독성·콘솔에러0 확인.
+- 업그레이드(화려하게): 다색 팔레트(블루·스카이·오렌지·퍼플) 발광 파티클+반짝임, 그라데이션 연결선, 마우스 글로우 헤일로+끌림, 클릭 리플 폭발+파티클 튕김, 배경 오로라 글로우 3blob(lighter). 점 수 상한 80·DPR보정 유지. 라이브 확인 완료.
 
 ## 참고: FastAPI 교안 PDF의 반영 위치
 - 원본 `docs/FastAPI_교안_V9_완성본.pdf`는 **docs/에 그대로 보관**(이동·재추가 없음). Vite 빌드는 public/+src만 번들 → **dist 미포함, 사이트 비배포** 레퍼런스 자료.
