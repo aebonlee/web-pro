@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Logo from './Logo'
-import { grad } from '../theme'
+import { grad, trackColor } from '../theme'
 import { useAuth } from '../hooks/useAuth'
 
-// 단일 라벨(한글) · 한 줄 구성. 트랙 4종도 그대로 노출, 드롭다운 없음.
+// 한 줄 구성 · 드롭다운 없음. 데스크톱은 3그룹(메인 · 학습 트랙 · 학습 도구)을
+// 구분선으로 나누고, 트랙 4종엔 트랙 색상 점을 붙여 한눈에 구분되게 한다.
 const NAV = [
   { to: '/about', label: '소개', en: 'ABOUT' },
   { to: '/curriculum', label: '커리큘럼', en: 'CURRICULUM' },
@@ -52,18 +53,30 @@ export default function Header() {
           <div style={{ padding: '0 clamp(16px,2vw,28px)', height: 70, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 18 }}>
             <Link to="/" aria-label="홈"><Logo /></Link>
 
-            {/* 데스크톱: 단일 라벨 한 줄 */}
-            <nav className="desknav" style={{ alignItems: 'center', gap: 'clamp(13px,1.5vw,24px)' }}>
-              {NAV.map((n) => {
-                const active = loc.pathname.startsWith(n.to)
-                return (
-                  <Link key={n.to} to={n.to} className="navlink"
-                    style={{ position: 'relative', fontSize: 15.5, fontWeight: active ? 700 : 600, letterSpacing: '-0.01em', color: active ? '#1A45D8' : '#15171C', whiteSpace: 'nowrap' }}>
-                    {n.label}
-                    {active && <span style={{ position: 'absolute', left: 0, right: 0, bottom: -10, height: 2, borderRadius: 2, background: '#1A45D8' }} />}
-                  </Link>
-                )
-              })}
+            {/* 데스크톱: 3그룹(메인 · 학습 트랙 · 학습 도구)을 구분선으로 분리 */}
+            <nav className="desknav" style={{ alignItems: 'center', gap: 'clamp(9px,1.1vw,16px)' }}>
+              {(() => {
+                const renderLink = (n) => {
+                  const active = loc.pathname.startsWith(n.to)
+                  const dot = n.track ? trackColor(n.to.split('/').pop()) : null
+                  return (
+                    <Link key={n.to} to={n.to} className="navlink"
+                      style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 15, fontWeight: active ? 700 : 600, letterSpacing: '-0.01em', color: active ? '#1A45D8' : '#15171C', whiteSpace: 'nowrap' }}>
+                      {dot && <span aria-hidden style={{ width: 7, height: 7, borderRadius: 99, background: dot, flexShrink: 0 }} />}
+                      {n.label}
+                      {active && <span style={{ position: 'absolute', left: dot ? 13 : 0, right: 0, bottom: -10, height: 2, borderRadius: 2, background: '#1A45D8' }} />}
+                    </Link>
+                  )
+                }
+                const divider = (k) => <span key={k} aria-hidden style={{ width: 1, height: 16, background: 'rgba(10,11,13,0.13)', flexShrink: 0 }} />
+                return [
+                  ...mains.slice(0, 2).map(renderLink),
+                  divider('d1'),
+                  ...tracks.map(renderLink),
+                  divider('d2'),
+                  ...mains.slice(2).map(renderLink),
+                ]
+              })()}
             </nav>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

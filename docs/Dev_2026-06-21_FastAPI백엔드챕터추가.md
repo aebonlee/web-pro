@@ -56,6 +56,12 @@
 - `src/pages/Resources.jsx`: `coaching.js`의 COACHING·APPENDIX import → BY TRACK 섹션 하단에 "코칭 · 가이드"(인디고 #6D5BD0) 섹션 추가. 기술 코칭/부록 가이드 2그룹, 가이드별 카드(카테고리 배지·제목·요약·태그)로 `/coaching/{id}` 링크. 히어로 통계에 '코칭·가이드 N종' 칩 + 소개문구 갱신.
 - 검증: render.test 14/14, build 성공, 로컬 프리뷰에서 섹션·전체 가이드(coach-fastapi 포함) 노출·에러 0 확인.
 
+## 9. 상단 메뉴 그룹 구분 (데스크톱)
+- 데스크톱 상단 네비가 10개 항목을 평평하게 나열하던 것을 **3그룹으로 시각 구분**(드롭다운 미사용 — 기존 결정 존중).
+- `src/components/Header.jsx`: 메인(소개·커리큘럼) ┃ 학습 트랙(웹기초·프론트엔드·AI·배포) ┃ 학습 도구(프로젝트·퀴즈·자료·코칭·가이드) 사이에 **세로 구분선** 삽입. 트랙 4종엔 **trackColor 색상 점**(보라·블루·오렌지·그린)으로 한눈에 구분. 모바일 그룹 논리와 일치.
+- 반응형 분기점 1040px 이하는 기존 버거→풀스크린 메뉴(이미 '학습 트랙' 그룹 보유) 유지.
+- 검증: render.test 14/14, 1280·1041px(최소 데스크톱) 한 줄 유지·CTA 미겹침, 빌드 OK.
+
 ## 참고: FastAPI 교안 PDF의 반영 위치
 - 원본 `docs/FastAPI_교안_V9_완성본.pdf`는 **docs/에 그대로 보관**(이동·재추가 없음). Vite 빌드는 public/+src만 번들 → **dist 미포함, 사이트 비배포** 레퍼런스 자료.
 - PDF '내용'이 반영된 산출물: 강의 `src/content/ai-09.md`(+curriculum/labs/review 메타), 코칭 가이드 `src/content/coach-fastapi.md`(+coaching.js).
