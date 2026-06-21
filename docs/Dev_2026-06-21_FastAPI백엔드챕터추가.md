@@ -51,6 +51,11 @@
   - 실제 값: 챕터28·강의146·용어223·퀴즈140·코칭4·부록10·Tips17·프로젝트18
 - 검증: 잔존 stale 0, build 성공, `npm run og`·`prerender`(70라우트) 동적 값으로 정상 생성, 테스트 29/29.
 
+## 8. 자료실에 코칭·가이드 섹션 추가
+- 운영자 요청으로 자료실(`/resources`)에 **코칭·가이드 섹션 신설**(기존엔 커리큘럼 챕터만 노출).
+- `src/pages/Resources.jsx`: `coaching.js`의 COACHING·APPENDIX import → BY TRACK 섹션 하단에 "코칭 · 가이드"(인디고 #6D5BD0) 섹션 추가. 기술 코칭/부록 가이드 2그룹, 가이드별 카드(카테고리 배지·제목·요약·태그)로 `/coaching/{id}` 링크. 히어로 통계에 '코칭·가이드 N종' 칩 + 소개문구 갱신.
+- 검증: render.test 14/14, build 성공, 로컬 프리뷰에서 섹션·전체 가이드(coach-fastapi 포함) 노출·에러 0 확인.
+
 ## 참고: FastAPI 교안 PDF의 반영 위치
 - 원본 `docs/FastAPI_교안_V9_완성본.pdf`는 **docs/에 그대로 보관**(이동·재추가 없음). Vite 빌드는 public/+src만 번들 → **dist 미포함, 사이트 비배포** 레퍼런스 자료.
 - PDF '내용'이 반영된 산출물: 강의 `src/content/ai-09.md`(+curriculum/labs/review 메타), 코칭 가이드 `src/content/coach-fastapi.md`(+coaching.js).

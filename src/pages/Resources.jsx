@@ -2,13 +2,17 @@ import { Link } from 'react-router-dom'
 import { C, trackColor, trackGrad } from '../theme'
 import { CHAPTERS, TRACKS, byTrack } from '../data/curriculum'
 import { labsOf, totalLabs } from '../data/labs'
+import { COACHING, APPENDIX } from '../data/coaching'
 import { Eyebrow } from '../components/ui'
 import Reveal from '../components/Reveal'
 import { usePageMeta } from '../hooks/usePageMeta'
 
+const GUIDE_ACCENT = '#6D5BD0' // 코칭·가이드 강조색(인디고)
+
 export default function Resources() {
-  usePageMeta('학습 자료·실습', '전 챕터 강의 목차와 실습 예제를 한곳에서.')
+  usePageMeta('학습 자료·실습', '전 챕터 강의 목차와 실습 예제, 코칭·가이드를 한곳에서.')
   const totalSec = CHAPTERS.reduce((n, c) => n + c.sections.length, 0)
+  const totalGuides = COACHING.length + APPENDIX.length
 
   return (
     <main style={{ background: '#fff' }}>
@@ -21,10 +25,10 @@ export default function Resources() {
             학습 자료 &<br /><span style={{ fontWeight: 800 }}>실습 예제</span>
           </h1>
           <p style={{ margin: '24px 0 0', maxWidth: 680, fontSize: 'clamp(15px,2vw,18px)', lineHeight: 1.7, color: '#9CA2AD' }}>
-            부트캠프의 모든 강의 내용을 웹에서 바로 학습하세요. {CHAPTERS.length}개 챕터 · {totalSec}개 강의 · {totalLabs}개 실습 예제의 본문과 코드를 챕터별로 상세히 제공합니다.
+            부트캠프의 모든 강의 내용을 웹에서 바로 학습하세요. {CHAPTERS.length}개 챕터 · {totalSec}개 강의 · {totalLabs}개 실습 예제와 코칭·가이드 {totalGuides}종의 본문과 코드를 한곳에서 제공합니다.
           </p>
           <div style={{ display: 'flex', gap: 28, marginTop: 30, flexWrap: 'wrap' }}>
-            {[['챕터', `${CHAPTERS.length}개`], ['강의', `${totalSec}개`], ['실습 예제', `${totalLabs}개`]].map(([k, v]) => (
+            {[['챕터', `${CHAPTERS.length}개`], ['강의', `${totalSec}개`], ['실습 예제', `${totalLabs}개`], ['코칭·가이드', `${totalGuides}종`]].map(([k, v]) => (
               <div key={k}>
                 <div style={{ fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, letterSpacing: '-0.02em' }}>{v}</div>
                 <div style={{ fontSize: 13, color: '#6B7178', marginTop: 4 }}>{k}</div>
@@ -102,6 +106,40 @@ export default function Resources() {
             </div>
           )
         })}
+
+        {/* 코칭 · 가이드 */}
+        <div style={{ marginTop: 'clamp(12px,2vw,24px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+            <span style={{ width: 11, height: 11, borderRadius: 99, background: GUIDE_ACCENT }} />
+            <h2 style={{ margin: 0, fontSize: 'clamp(20px,2.6vw,26px)', fontWeight: 800, letterSpacing: '-0.02em' }}>코칭 · 가이드</h2>
+            <span style={{ fontSize: 13.5, color: '#9CA2AD' }}>COACHING &amp; GUIDES</span>
+          </div>
+          <p style={{ margin: '0 0 22px 23px', fontSize: 14.5, color: '#6B7178' }}>
+            전문가 1:1 기술 코칭 {COACHING.length}회차와 실무 부록 가이드 {APPENDIX.length}종 — API 키 보안·Supabase·FastAPI 백엔드·배포·SEO 등 실전 노하우를 모았습니다.
+          </p>
+
+          {[['기술 코칭', COACHING], ['부록 가이드', APPENDIX]].map(([label, items]) => (
+            <div key={label} style={{ marginBottom: 24 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#9CA2AD', margin: '0 0 12px 23px' }}>{label} {items.length}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 14 }}>
+                {items.map((g) => (
+                  <Reveal key={g.id}>
+                    <Link to={`/coaching/${g.id}`} className="hov-lift" style={{ display: 'flex', flexDirection: 'column', height: '100%', border: `1px solid ${C.line}`, borderRadius: 18, padding: '20px 22px', background: '#fff' }}>
+                      <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.08em', color: GUIDE_ACCENT }}>{g.category === 'coaching' ? 'COACHING' : 'APPENDIX'}</span>
+                      <h3 style={{ margin: '8px 0 6px', fontSize: 17, fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.3 }}>{g.title}</h3>
+                      <p style={{ margin: 0, fontSize: 13, color: '#6B7178', lineHeight: 1.6, flexGrow: 1 }}>{g.summary}</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
+                        {g.tags.map((t) => (
+                          <span key={t} style={{ fontSize: 11.5, color: '#5B616B', background: C.soft, padding: '4px 9px', borderRadius: 8 }}>{t}</span>
+                        ))}
+                      </div>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   )
