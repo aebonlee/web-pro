@@ -102,16 +102,16 @@ export default function Home() {
               const chs = byTrack(tr.id)
               const totalSec = chs.reduce((n, c) => n + c.sections.length, 0)
               return (
-                <Reveal key={tr.id} delay={idx * 90}>
+                <Reveal key={tr.id} delay={idx * 90} style={{ height: '100%' }}>
                   <Link to={`/track/${tr.id}`} className="card-link" style={{
-                    display: 'flex', flexDirection: 'column', minHeight: 320,
+                    display: 'flex', flexDirection: 'column', height: '100%', minHeight: 320,
                     background: trackHero(tr.id),
                     border: `1px solid ${tr.color}55`, borderRadius: 26, padding: 'clamp(30px,3.4vw,46px)', color: '#fff', position: 'relative', overflow: 'hidden',
                   }}>
                     <img src={`/assets/${tr.id === 'ai' ? 'orn-flower' : tr.id === 'ops' ? 'orn-tunnel' : 'orn-rings'}.svg`} alt="" style={{ position: 'absolute', right: -30, bottom: -30, width: 200, height: 200, opacity: 0.22 }} />
                     <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em', color: tr.id === 'ai' ? '#FFB37A' : tr.id === 'ops' ? '#5CE0A8' : '#8FB4FF' }}>{tr.en.toUpperCase()}</span>
-                    <h3 style={{ margin: '16px 0 0', fontSize: 'clamp(26px,3vw,40px)', fontWeight: 800, letterSpacing: '-0.02em' }}>{tr.label}</h3>
-                    <p style={{ margin: '16px 0 auto', maxWidth: 420, fontSize: 15.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.82)' }}>{tr.desc}</p>
+                    <h3 style={{ margin: '16px 0 0', fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.15, minHeight: '2.3em', fontWeight: 800, letterSpacing: '-0.02em', wordBreak: 'keep-all' }}>{tr.label}</h3>
+                    <p style={{ margin: '14px 0 auto', maxWidth: 420, fontSize: 15.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.82)' }}>{tr.desc}</p>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 28 }}>
                       <div style={{ display: 'flex', gap: 18, fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.9)' }}>
                         <span>{chs.length}개 챕터</span><span>{totalSec}개 강의</span>
