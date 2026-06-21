@@ -33,3 +33,10 @@
 ## 5. 비고
 - 원본 PDF(`docs/FastAPI_교안_V9_완성본.pdf`)는 docs에 보관(비배포 자료).
 - ai-09는 모델 데모를 넘어 사용자·데이터·인증을 갖춘 실서비스로 확장하는 백엔드 한 사이클을 담당.
+
+## 6. 후속 — 코칭 가이드 반영 (coach-fastapi)
+- 운영자 요청으로 ai-09 백엔드 내용을 **코칭 가이드(부록)** 에도 반영.
+- `coach-supabase`("Supabase 실전 패턴 — 백엔드를 백엔드 없이")의 짝으로 **`coach-fastapi` "FastAPI 백엔드 실전 패턴"** 신설(category appendix).
+- `src/content/coach-fastapi.md`: 폴더 분리 / Create·Response 스키마 분리(보안) / Depends(get_db) 세션 / Repository 패턴 / 상태 코드 / CORS / TestClient / Dockerfile + 자주 겪는 함정 · 백엔드 선택 가이드(Supabase vs FastAPI) · 점검 체크리스트 · 실습 과제. 본문에서 강의 9장(/lesson/ai-09)으로 연결.
+- `src/data/coaching.js`: GUIDES에 coach-fastapi 추가(coach-supabase 직후) → APPENDIX 9→10종, Coaching 페이지 카운트 자동 반영.
+- 검증: data.test + render.test 29/29 통과, build 성공(coach-fastapi 청크 생성).

@@ -133,6 +133,19 @@ export const GUIDES = [
     ]
   },
   {
+    "id": "coach-fastapi",
+    "title": "FastAPI 백엔드 실전 패턴",
+    "category": "appendix",
+    "summary": "DB·CRUD·검증을 직접 만드는 백엔드 — \"백엔드를 백엔드 없이\"(Supabase)의 반대편 짝. 9장 FastAPI 백엔드 완성의 실전 패턴 압축판.",
+    "tags": [
+      "FastAPI",
+      "SQLAlchemy",
+      "Pydantic",
+      "CRUD",
+      "Docker"
+    ]
+  },
+  {
     "id": "coach-seo",
     "title": "SEO·OG 메타 & 공유 캐시 잡기",
     "category": "appendix",
