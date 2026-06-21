@@ -9,8 +9,8 @@ import { useAuth } from '../hooks/useAuth'
 const NAV = [
   { to: '/about', label: '소개', en: 'ABOUT' },
   { to: '/curriculum', label: '커리큘럼', en: 'CURRICULUM' },
-  { to: '/track/web', label: '웹기초', en: 'WEB', track: true },
-  { to: '/track/react', label: '프론트엔드', en: 'REACT', track: true },
+  { to: '/track/web', label: '웹 기초', en: 'WEB', track: true },
+  { to: '/track/react', label: 'React 프론트엔드', en: 'REACT', track: true },
   { to: '/track/ai', label: 'AI 웹 서비스', en: 'AI', track: true },
   { to: '/track/ops', label: '실전 배포·협업', en: 'DEPLOY', track: true },
   { to: '/projects', label: '프로젝트', en: 'PROJECTS' },
