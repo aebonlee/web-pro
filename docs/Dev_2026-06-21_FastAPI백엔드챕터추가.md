@@ -64,6 +64,12 @@
 - 후속: 트랙 메뉴명을 정식 명칭으로 통일 — AI → **"AI 웹 서비스"**, 배포 → **"실전 배포·협업"**(TRACKS 라벨과 일치). 1280·1100·1041px 모두 한 줄·미겹침 확인.
 - 후속2: 나머지 트랙도 정식 명칭으로 — 웹기초 → **"웹 기초"**, 프론트엔드 → **"React 프론트엔드"**. 4종 모두 풀네임이 되어 폭이 늘어 **반응형 분기점 1040→1100px 상향**(1041~1100 구간은 버거 메뉴로). ≥1101px 데스크톱 nav 여유 40px+ 확보, 1280·1101px 한 줄 확인.
 
+## 10. 히어로 배경 JS 효과 (파티클 네트워크)
+- 홈 히어로(`Home.jsx`)에 캔버스 기반 인터랙티브 배경 효과 추가.
+- `src/components/HeroCanvas.jsx` 신설: 브랜드 블루/오렌지 파티클이 떠다니며 가까운 점끼리 선 연결, 마우스 근처로 끌림+연결선(pointermove). silk.svg·라디얼 그라데이션 위·콘텐츠 아래에 배치, `pointer-events:none`으로 클릭 통과.
+- 품질: `prefers-reduced-motion` 시 1프레임 정적 렌더, DPR 보정(상한 2), 면적 비례 점 개수(26~70), rAF·리사이즈·언마운트 정리. jsdom 등 캔버스 미지원 환경 가드(getContext/matchMedia) → 렌더 테스트 안전.
+- 검증: render.test 14/14, build OK, 로컬 프리뷰에서 캔버스 마운트·마우스 인터랙션·텍스트 가독성·콘솔에러0 확인.
+
 ## 참고: FastAPI 교안 PDF의 반영 위치
 - 원본 `docs/FastAPI_교안_V9_완성본.pdf`는 **docs/에 그대로 보관**(이동·재추가 없음). Vite 빌드는 public/+src만 번들 → **dist 미포함, 사이트 비배포** 레퍼런스 자료.
 - PDF '내용'이 반영된 산출물: 강의 `src/content/ai-09.md`(+curriculum/labs/review 메타), 코칭 가이드 `src/content/coach-fastapi.md`(+coaching.js).
